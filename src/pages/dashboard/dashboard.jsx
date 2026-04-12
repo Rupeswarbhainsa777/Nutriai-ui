@@ -4,4 +4,4 @@ const  dashboard =()=>{
         <h1>dashboard</h1>
     );
 }
-export default dashboard
+export default dashboard;
