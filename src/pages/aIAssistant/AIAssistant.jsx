@@ -1,9 +1,9 @@
 import './aIAssistant.css';
 
-const aiAssistant =()=>{
+const AIAssistant =()=>{
     return (
         <h1>aiAssistant</h1>
     );
 }
 
-export default aiAssistant();
+export default AIAssistant;

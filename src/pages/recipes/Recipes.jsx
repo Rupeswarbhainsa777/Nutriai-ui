@@ -1,9 +1,9 @@
 import './recipes.css'
 
-const recipes=()=>{
+const Recipes=()=>{
     return (
         <h1>recipes</h1>
     );
 }
 
-export default recipes();
+export default Recipes;

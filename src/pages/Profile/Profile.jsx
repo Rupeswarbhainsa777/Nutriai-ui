@@ -1,8 +1,8 @@
 import './profile.css';
-const profile=()=>{
+const Profile=()=>{
     return (
         <h1>profile</h1>
     )
 }
 
-export default profile;
+export default Profile;
