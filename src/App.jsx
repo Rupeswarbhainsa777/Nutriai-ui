@@ -1,11 +1,12 @@
 import './App.css'
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
 function App() {
 
 
     return (
 
-        <h1>Hello Vit</h1>
+         <Dashboard />
 
     )
 }
