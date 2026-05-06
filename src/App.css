@@ -1,0 +1,58 @@
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Nav / Header (if you have one) ─────────────────── */
+nav {
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+/* ── Page transitions ────────────────────────────────── */
+.page-enter {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease, transform 300ms ease;
+}
+
+/* ── Utility: fade-in on load ────────────────────────── */
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Card hover lift (complements Tailwind shadow) ───── */
+.recipe-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-4px);
+}
+
+/* ── Nutrition badge base ─────────────────────────────── */
+.nutrition-value {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1;
+}
+
+/* ── Responsive container ─────────────────────────────── */
+.container-page {
+    width: 100%;
+    max-width: 1100px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+}
