@@ -1,16 +1,17 @@
-export const allRecipes = async () => {
+const BASE_URL = "http://localhost:1003/api/recipe";
+
+// Get all recipes
+export const getAllRecipes = async () => {
     try {
-        const response = await fetch('http://localhost:1003/api/recipe/getall');
+        const response = await fetch(`${BASE_URL}/getall`);
 
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error("Failed to fetch recipes");
         }
 
-        const data = await response.json();
-        return data;
-
+        return await response.json();
     } catch (error) {
-        console.error("Error fetching recipes:", error);
+        console.error("API Error:", error);
         throw error;
     }
 };
