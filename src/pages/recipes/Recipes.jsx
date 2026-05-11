@@ -11,7 +11,7 @@ const Recipes = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-stone-50 px-6 py-12 font-serif">
+        <div className="min-h-screen w-full bg-stone-50 px-6 py-12 font-serif">
             {/* Header */}
             <div className="max-w-5xl mx-auto mb-12 border-b-2 border-stone-800 pb-4">
                 <p className="text-xs uppercase tracking-[0.3em] text-stone-400 mb-1">

@@ -1,40 +1,30 @@
 import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppProvider } from "./contex/AppProvider.jsx";
+import Menubar from "./components/Menubar/Menubar.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
-import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import MealPlanner from "./pages/mealplanner/MealPlanner.jsx";
-import Profile from "./pages/profile/Profile.jsx"; // ✅ fixed folder case
-import AIAssistant from "./pages/aiAssistant/AIAssistant.jsx"; // ✅ fixed naming
+import Profile from "./pages/profile/Profile.jsx";
+import AIAssistant from "./pages/aiAssistant/AIAssistant.jsx";
 import Recipes from "./pages/recipes/Recipes.jsx";
 
 function App() {
-
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <Dashboard/>
-        },
-        {
-            path: "/meal-planner",
-            element: <MealPlanner/>
-        },
-        {
-            path: "/profile",
-            element: <Profile/>
-        },
-        {
-            path: "/ai-assistant",
-            element: <AIAssistant/>
-        },
-        {
-            path: "/recipes",
-            element: <Recipes/>
-        }
-    ]);
-
     return (
-        <RouterProvider router={router}/>
-
-    )
+        <AppProvider>
+            <BrowserRouter>
+                <Menubar />
+                <main className="min-h-screen w-full overflow-x-hidden bg-white pt-[68px]">
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/meal-planner" element={<MealPlanner />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/ai-assistant" element={<AIAssistant />} />
+                        <Route path="/recipes" element={<Recipes />} />
+                    </Routes>
+                </main>
+            </BrowserRouter>
+        </AppProvider>
+    );
 }
 
 export default App;
