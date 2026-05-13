@@ -5,12 +5,21 @@ import { userDetails } from "../../service/User.js";
 const Profile = () => {
     const [user, setUser] = useState(null);
     const id = 1; // Replace with dynamic user id if needed
-
+    const defaultUser = {
+        name: "N/A",
+        email: "N/A",
+        goal: "N/A",
+        dietaryRestrictions: "N/A",
+        height: "N/A",
+        weight: "N/A",
+        age: "N/A",
+    };
     useEffect(() => {
         userDetails({ id }).then((data) => {
             setUser(data);
         }).catch((error) => {
             console.error("Error fetching user details:", error);
+            setUser(defaultUser)
         });
     }, [id]);
 
