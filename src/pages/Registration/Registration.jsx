@@ -69,12 +69,34 @@ const Registration = () => {
               )}
 
               <form onSubmit={handleSubmit}>
-
+                  //name
                   <input
                       type="text"
                       name="name"
                       placeholder="Enter your name"
                       value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className=""
+                  />
+
+                  //email
+                  <input
+                      type="email"
+                      name="Email"
+                      placeholder="Enter your email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className=""
+                  />
+
+                  //password
+                  <input
+                      type="password"
+                      name="Password"
+                      placeholder="Enter your password"
+                      value={formData.password}
                       onChange={handleChange}
                       required
                       className=""
