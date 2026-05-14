@@ -69,7 +69,7 @@ const Registration = () => {
               )}
 
               <form onSubmit={handleSubmit}>
-                  //name
+                  {/*//name*/}
                   <input
                       type="text"
                       name="name"
@@ -80,7 +80,7 @@ const Registration = () => {
                       className=""
                   />
 
-                  //email
+                  {/*//email*/}
                   <input
                       type="email"
                       name="Email"
@@ -91,7 +91,7 @@ const Registration = () => {
                       className=""
                   />
 
-                  //password
+                  {/*//password*/}
                   <input
                       type="password"
                       name="Password"
@@ -101,6 +101,60 @@ const Registration = () => {
                       required
                       className=""
                   />
+                  <input
+                      type="text"
+                      name="goal"
+                      placeholder="Enter your goal"
+                      value={formData.goal}
+                      onChange={handleChange}
+                      required
+
+                  />
+
+                  {/* Dietary Restrictions */}
+                  <input
+                      type="text"
+                      name="dietaryRestrictions"
+                      placeholder="Dietary Restrictions"
+                      value={formData.dietaryRestrictions}
+                      onChange={handleChange}
+                      required
+
+                  />
+
+                  {/* Height */}
+                  <input
+                      type="number"
+                      name="height"
+                      placeholder="Height (cm)"
+                      value={formData.height}
+                      onChange={handleChange}
+                      required
+
+                  />
+
+                  {/* Weight */}
+                  <input
+                      type="number"
+                      name="weight"
+                      placeholder="Weight (kg)"
+                      value={formData.weight}
+                      onChange={handleChange}
+                      required
+
+                  />
+
+                  {/* Age */}
+                  <input
+                      type="number"
+                      name="age"
+                      placeholder="Age"
+                      value={formData.age}
+                      onChange={handleChange}
+                      required
+
+                  />
+
 
 
               </form>
