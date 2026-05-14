@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:1003/api/auth";
 
 export const registration = async (credentials) => {
-    const response = await fetch(`${BASE_URL}/auth/reg`, {
+    const response = await fetch(`${BASE_URL}/reg`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
