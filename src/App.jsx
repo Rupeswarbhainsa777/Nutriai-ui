@@ -8,6 +8,8 @@ import Profile from "./pages/profile/Profile.jsx";
 import AIAssistant from "./pages/aiAssistant/AIAssistant.jsx";
 import Recipes from "./pages/recipes/Recipes.jsx";
 import NotFound from "./pages/Default/NotFound.jsx";
+import Login from "./pages/Login/Login.jsx";
+import Registration from "./pages/Registration/Registration.jsx";
 
 function App() {
     return (
@@ -21,6 +23,8 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/ai-assistant" element={<AIAssistant />} />
                         <Route path="/recipes" element={<Recipes />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/reg" element={<Registration />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                 </main>
