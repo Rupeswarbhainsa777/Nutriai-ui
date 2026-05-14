@@ -61,7 +61,29 @@ const Registration = () => {
 
     }
     return (
-        <h1>Reg</h1>
+      <div>
+          <div>
+              <h1>Registration</h1>
+              {msg && (
+                  <p>{msg}</p>
+              )}
+
+              <form onSubmit={handleSubmit}>
+
+                  <input
+                      type="text"
+                      name="name"
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className=""
+                  />
+
+
+              </form>
+          </div>
+      </div>
     );
 }
 export default Registration;
