@@ -154,6 +154,44 @@ const Registration = () => {
                       required
 
                   />
+                  <input
+                      onChange={(e)=>handleMealPlanChange(0,e.target.value)}
+
+                      type="text"
+                      name="mealPlan1"
+                      placeholder="Meal Plan 1"
+                      value={formData.mealPlans[0].mealName}
+                      required
+
+                  />
+
+                  {/* Meal Plan 2 */}
+                  <input
+                      onChange={(e)=>handleMealPlanChange(1,e.target.value)}
+                      type="text"
+                      name="mealPlan2"
+                      placeholder="Meal Plan 2"
+                      value={formData.mealPlans[1].mealName}
+                      required
+
+                  />
+                  <input
+                      onChange={handlePreferenceChange}
+                      type="text"
+                      name="preferredCuisine"
+                      placeholder="Preferred Cuisine"
+                      value={formData.preference.preferredCuisine}
+                      required
+
+                  />
+
+                  {/* Submit Button */}
+                  <button
+                      type="submit"
+
+                  >
+                      Register
+                  </button>
 
 
 
