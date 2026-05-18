@@ -51,7 +51,7 @@ const icons = {
 
 /* ─── Nav link definitions ───────────────────────────────── */
 const links = [
-    { label: "Dashboard",    path: "/",              icon: icons.dashboard,   end: true  },
+    { label: "Dashboard",    path: "/dashboard",              icon: icons.dashboard,   end: true  },
     { label: "Recipes",      path: "/recipes",       icon: icons.recipes,     end: false },
     { label: "Meal Planner", path: "/meal-planner",  icon: icons.mealPlanner, end: false },
     { label: "AI Assistant", path: "/ai-assistant",  icon: icons.ai,          end: false },

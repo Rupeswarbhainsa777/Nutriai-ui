@@ -18,12 +18,13 @@ function App() {
                 <Menubar />
                 <main className="min-h-screen w-full overflow-x-hidden bg-white pt-[68px]">
                     <Routes>
-                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/meal-planner" element={<MealPlanner />} />
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/ai-assistant" element={<AIAssistant />} />
                         <Route path="/recipes" element={<Recipes />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/" element={<Login />} />
                         <Route path="/reg" element={<Registration />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
