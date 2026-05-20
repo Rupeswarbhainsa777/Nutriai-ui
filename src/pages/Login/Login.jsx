@@ -70,7 +70,7 @@ const Login = () => {
                             </div>
                             <span className="text-white font-bold text-2xl tracking-tight"
                                   style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
-                                NutriAI
+                                Nutri AI
                             </span>
                         </div>
                         <p className="text-green-100 text-sm mt-1 leading-relaxed">
@@ -211,4 +211,4 @@ const Login = () => {
         </div>
     );
 }
-export default Login;
+export default Login;
