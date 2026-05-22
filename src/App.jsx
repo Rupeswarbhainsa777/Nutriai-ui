@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AppProvider } from "./contex/AppProvider.jsx";
 import Menubar from "./components/Menubar/Menubar.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
@@ -11,24 +11,41 @@ import NotFound from "./pages/Default/NotFound.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
 
+function AppContent() {
+
+    const location = useLocation();
+
+    const hideNavbar =
+        location.pathname === "/login" ||
+        location.pathname === "/reg" ||
+        location.pathname === "/";
+
+    return (
+        <>
+            {!hideNavbar && <Menubar />}
+
+            <main className="min-h-screen w-full overflow-x-hidden bg-white pt-[68px]">
+                <Routes>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/meal-planner" element={<MealPlanner />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/ai-assistant" element={<AIAssistant />} />
+                    <Route path="/recipes" element={<Recipes />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/reg" element={<Registration />} />
+                    <Route path="/*" element={<NotFound />} />
+                </Routes>
+            </main>
+        </>
+    );
+}
+
 function App() {
     return (
         <AppProvider>
             <BrowserRouter>
-                <Menubar />
-                <main className="min-h-screen w-full overflow-x-hidden bg-white pt-[68px]">
-                    <Routes>
-                        <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/meal-planner" element={<MealPlanner />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/ai-assistant" element={<AIAssistant />} />
-                        <Route path="/recipes" element={<Recipes />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/" element={<Login />} />
-                        <Route path="/reg" element={<Registration />} />
-                        <Route path="/*" element={<NotFound />} />
-                    </Routes>
-                </main>
+                <AppContent />
             </BrowserRouter>
         </AppProvider>
     );
