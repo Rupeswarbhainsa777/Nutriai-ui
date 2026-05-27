@@ -83,11 +83,11 @@ const Registration = () => {
                         </div>
                         <div>
                             <label className={label}>Email <span className="text-red-500">*</span></label>
-                            <input type="email" name="Email" value={formData.email} onChange={handleChange} required className={input}/>
+                            <input type="text" name="email" value={formData.email} onChange={handleChange} required className={input}/>
                         </div>
                         <div>
                             <label className={label}>Password <span className="text-red-500">*</span></label>
-                            <input type="password" name="Password" value={formData.password} onChange={handleChange} required className={input}/>
+                            <input type="password" name="password" value={formData.password} onChange={handleChange} required className={input}/>
                         </div>
                     </div>
 

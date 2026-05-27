@@ -24,7 +24,12 @@ function AppContent() {
         <>
             {!hideNavbar && <Menubar />}
 
-            <main className="min-h-screen w-full overflow-x-hidden bg-white pt-[68px]">
+            {/* pt-[68px] only applied when navbar is visible so login/reg are full-screen */}
+            <main
+                className={`w-full overflow-x-hidden${
+                    !hideNavbar ? " pt-[68px] min-h-[calc(100vh-68px)]" : " min-h-screen"
+                }`}
+            >
                 <Routes>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/meal-planner" element={<MealPlanner />} />
