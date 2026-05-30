@@ -12,22 +12,23 @@ import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
 
 function AppContent() {
-
     const location = useLocation();
 
-    const hideNavbar =
+    const isAuthPage =
         location.pathname === "/login" ||
         location.pathname === "/reg" ||
         location.pathname === "/";
 
+    const showFullNav = !isAuthPage;
+
     return (
         <>
-            {!hideNavbar && <Menubar />}
+            <Menubar />
 
-            {/* pt-[68px] only applied when navbar is visible so login/reg are full-screen */}
+            {/* pt-[68px] only applied when full navbar is visible so login/reg are full-screen */}
             <main
                 className={`w-full overflow-x-hidden${
-                    !hideNavbar ? " pt-[68px] min-h-[calc(100vh-68px)]" : " min-h-screen"
+                    showFullNav ? " pt-[68px] min-h-[calc(100vh-68px)]" : " min-h-screen"
                 }`}
             >
                 <Routes>

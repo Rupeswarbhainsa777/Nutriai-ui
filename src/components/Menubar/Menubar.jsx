@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./Menubar.css";
 
 /* ─── Icons ─────────────────────────────────────────────── */
@@ -62,6 +62,14 @@ const links = [
 export default function Menubar() {
     const [open, setOpen]       = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
+
+    const isAuthPage =
+        location.pathname === "/login" ||
+        location.pathname === "/reg" ||
+        location.pathname === "/";
+
+    const showFullNav = !isAuthPage;
 
     /* Scroll detection → thicker shadow */
     useEffect(() => {
@@ -92,87 +100,95 @@ export default function Menubar() {
                     </NavLink>
 
                     {/* Desktop links */}
-                    <ul className="navbar-links" role="list">
-                        {links.map(({ label, path, icon, end }) => (
-                            <li key={path}>
-                                <NavLink
-                                    to={path}
-                                    end={end}
-                                    className={({ isActive }) =>
-                                        `navbar-link${isActive ? " active" : ""}`
-                                    }
-                                >
-                                    {icon}
-                                    {label}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
+                    {showFullNav && (
+                        <ul className="navbar-links" role="list">
+                            {links.map(({ label, path, icon, end }) => (
+                                <li key={path}>
+                                    <NavLink
+                                        to={path}
+                                        end={end}
+                                        className={({ isActive }) =>
+                                            `navbar-link${isActive ? " active" : ""}`
+                                        }
+                                    >
+                                        {icon}
+                                        {label}
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
 
                     {/* CTA button (desktop) */}
-                    <div className="navbar-actions">
-                        <NavLink to="/meal-planner" className="navbar-cta" aria-label="Plan your meal">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
-                            Plan Meal
-                        </NavLink>
-                    </div>
+                    {showFullNav && (
+                        <div className="navbar-actions">
+                            <NavLink to="/meal-planner" className="navbar-cta" aria-label="Plan your meal">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                                    <path d="M12 5v14M5 12h14" />
+                                </svg>
+                                Plan Meal
+                            </NavLink>
+                        </div>
+                    )}
 
                     {/* Hamburger (mobile) */}
-                    <button
-                        id="mobile-menu-toggle"
-                        className={`navbar-hamburger${open ? " open" : ""}`}
-                        onClick={() => setOpen(prev => !prev)}
-                        aria-expanded={open}
-                        aria-controls="mobile-menu"
-                        aria-label={open ? "Close menu" : "Open menu"}
-                    >
-                        <span className="hamburger-bar" />
-                        <span className="hamburger-bar" />
-                        <span className="hamburger-bar" />
-                    </button>
+                    {showFullNav && (
+                        <button
+                            id="mobile-menu-toggle"
+                            className={`navbar-hamburger${open ? " open" : ""}`}
+                            onClick={() => setOpen(prev => !prev)}
+                            aria-expanded={open}
+                            aria-controls="mobile-menu"
+                            aria-label={open ? "Close menu" : "Open menu"}
+                        >
+                            <span className="hamburger-bar" />
+                            <span className="hamburger-bar" />
+                            <span className="hamburger-bar" />
+                        </button>
+                    )}
                 </div>
             </nav>
 
             {/* ── Mobile Drawer ── */}
-            <div
-                id="mobile-menu"
-                className={`navbar-mobile-menu${open ? " open" : ""}`}
-                aria-hidden={!open}
-                role="dialog"
-                aria-modal="true"
-                aria-label="Mobile navigation"
-            >
-                {links.map(({ label, path, icon, end }) => (
-                    <NavLink
-                        key={path}
-                        to={path}
-                        end={end}
-                        onClick={() => setOpen(false)}
-                        className={({ isActive }) =>
-                            `mobile-link${isActive ? " active" : ""}`
-                        }
-                    >
-                        {icon}
-                        {label}
-                    </NavLink>
-                ))}
-
-                <div className="mobile-divider" />
-
-                <NavLink
-                    to="/meal-planner"
-                    className="navbar-cta"
-                    onClick={() => setOpen(false)}
-                    style={{ justifyContent: "center", marginTop: "0.25rem" }}
+            {showFullNav && (
+                <div
+                    id="mobile-menu"
+                    className={`navbar-mobile-menu${open ? " open" : ""}`}
+                    aria-hidden={!open}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Mobile navigation"
                 >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-                        <path d="M12 5v14M5 12h14" />
-                    </svg>
-                    Plan My Meal
-                </NavLink>
-            </div>
+                    {links.map(({ label, path, icon, end }) => (
+                        <NavLink
+                            key={path}
+                            to={path}
+                            end={end}
+                            onClick={() => setOpen(false)}
+                            className={({ isActive }) =>
+                                `mobile-link${isActive ? " active" : ""}`
+                            }
+                        >
+                            {icon}
+                            {label}
+                        </NavLink>
+                    ))}
+
+                    <div className="mobile-divider" />
+
+                    <NavLink
+                        to="/meal-planner"
+                        className="navbar-cta"
+                        onClick={() => setOpen(false)}
+                        style={{ justifyContent: "center", marginTop: "0.25rem" }}
+                    >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Plan My Meal
+                    </NavLink>
+                </div>
+            )}
         </>
     );
 }
