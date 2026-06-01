@@ -1,9 +1,20 @@
 const BASE_URL = "http://localhost:1003/api/recipe";
 
+const getAuthHeaders = () => {
+    const token = localStorage.getItem("token");
+
+    return {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+    };
+};
+
 // Get all recipes
 export const getAllRecipes = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/getall`);
+        const response = await fetch(`${BASE_URL}/getall`, {
+            headers: getAuthHeaders(),
+        });
 
         if (!response.ok) {
             throw new Error("Failed to fetch recipes");
@@ -19,7 +30,9 @@ export const getAllRecipes = async () => {
 // Get recipe by ID
 export const getRecipeById = async (id) => {
     try {
-        const response = await fetch(`${BASE_URL}/${id}`);
+        const response = await fetch(`${BASE_URL}/${id}`, {
+            headers: getAuthHeaders(),
+        });
 
         if (!response.ok) {
             throw new Error("Failed to fetch recipe");
@@ -37,9 +50,7 @@ export const addRecipe = async (recipeData) => {
     try {
         const response = await fetch(`${BASE_URL}/add`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: getAuthHeaders(),
             body: JSON.stringify(recipeData),
         });
 
@@ -59,9 +70,7 @@ export const updateRecipe = async (id, recipeData) => {
     try {
         const response = await fetch(`${BASE_URL}/update/${id}`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: getAuthHeaders(),
             body: JSON.stringify(recipeData),
         });
 
@@ -81,16 +90,15 @@ export const deleteRecipe = async (id) => {
     try {
         const response = await fetch(`${BASE_URL}/delete/${id}`, {
             method: "DELETE",
+            headers: getAuthHeaders(),
         });
 
         if (!response.ok) {
             throw new Error("Failed to delete recipe");
         }
 
-        // If backend returns JSON
         return await response.json();
-
-        // If backend returns plain text, use:
+        // If backend returns text:
         // return await response.text();
     } catch (error) {
         console.error("API Error:", error);
