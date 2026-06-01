@@ -4,7 +4,9 @@ import { userDetails } from "../../service/User.js";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
-    const id = 1; // Replace with dynamic user id if needed
+    const responseId = localStorage.getItem("userId");
+    const id = Number(responseId)
+    console.log(id)
     const defaultUser = {
         name: "N/A",
         email: "N/A",

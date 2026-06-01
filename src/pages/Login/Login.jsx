@@ -9,6 +9,8 @@ const Login = () => {
         email: "",
         password: "",
     });
+    console.log(formData.email);
+    console.log(formData.password);
 
     const [message, setMessage] = useState("");
 
