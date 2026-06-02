@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {loginUser} from "../../service/Auth.js";
+import {toast, ToastContainer} from "react-toastify";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Login = () => {
     console.log(formData.email);
     console.log(formData.password);
 
-    const [message, setMessage] = useState("");
+
 
     const handleChange = (e) => {
         setFormData({
@@ -26,19 +27,20 @@ const Login = () => {
         try {
             const data = await loginUser(formData);
 
-            // Save only user information (JWT removed for now)
+
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            setMessage("Login successful!");
 
-            // Redirect to dashboard
+            toast.success("Login successful!");
+
+
             navigate("/dashboard");
         } catch (error) {
-            setMessage(error.message);
+
+            toast.error("Please check your email address and password");
         }
     };
 
-    const isError = message && !message.toLowerCase().includes("success");
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
@@ -126,17 +128,8 @@ const Login = () => {
                     </h1>
                     <p className="text-sm text-gray-500 mb-8">Sign in to continue to your dashboard</p>
 
-                    {/* Status message */}
-                    {message && (
-                        <div className={`mb-5 flex items-center gap-2 text-sm px-4 py-3 rounded-lg border ${
-                            isError
-                                ? "text-red-700 bg-red-50 border-red-200"
-                                : "text-green-700 bg-green-50 border-green-200"
-                        }`}>
-                            <span>{isError ? "✕" : "✓"}</span>
-                            <span>{message}</span>
-                        </div>
-                    )}
+
+
 
                     <form onSubmit={handleSubmit} className="space-y-5">
 
@@ -210,6 +203,14 @@ const Login = () => {
                     </p>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         </div>
     );
 }
