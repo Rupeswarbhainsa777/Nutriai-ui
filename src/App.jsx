@@ -1,6 +1,6 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AppProvider } from "./contex/AppProvider.jsx";
+import {BrowserRouter, Routes, Route, useLocation} from "react-router-dom";
+import {AppProvider} from "./contex/AppProvider.jsx";
 import Menubar from "./components/Menubar/Menubar.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import MealPlanner from "./pages/mealplanner/MealPlanner.jsx";
@@ -11,8 +11,9 @@ import NotFound from "./pages/Default/NotFound.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
 import Weeklymealplan from "./pages/mealplanner/WeeklyMealPlan/Weeklymealplan.jsx";
-import { ToastContainer } from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddOrUpdateEntry from "./pages/mealplanner/AddOrUpdateEntry/AddOrUpdateEntry.jsx";
 
 
 function AppContent() {
@@ -27,7 +28,7 @@ function AppContent() {
 
     return (
         <>
-            <Menubar />
+            <Menubar/>
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
@@ -48,16 +49,17 @@ function AppContent() {
                 }`}
             >
                 <Routes>
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/meal-planner" element={<MealPlanner />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/ai-assistant" element={<AIAssistant />} />
-                    <Route path="/recipes" element={<Recipes />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/" element={<Login />} />
-                    <Route path="/reg" element={<Registration />} />
-                    <Route path="/weeklyplan" element={<Weeklymealplan />} />
-                    <Route path="/*" element={<NotFound />} />
+                    <Route path="/dashboard" element={<Dashboard/>}/>
+                    <Route path="/meal-planner" element={<MealPlanner/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/ai-assistant" element={<AIAssistant/>}/>
+                    <Route path="/recipes" element={<Recipes/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/" element={<Login/>}/>
+                    <Route path="/reg" element={<Registration/>}/>
+                    <Route path="/weeklyplan" element={<Weeklymealplan/>}/>
+                    <Route path="/addentry" element={<AddOrUpdateEntry />} />
+                        <Route path="/*" element={<NotFound />}/>
                 </Routes>
             </main>
         </>
@@ -68,7 +70,7 @@ function App() {
     return (
         <AppProvider>
             <BrowserRouter>
-                <AppContent />
+                <AppContent/>
             </BrowserRouter>
         </AppProvider>
     );
