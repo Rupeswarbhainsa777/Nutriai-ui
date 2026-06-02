@@ -11,6 +11,8 @@ import NotFound from "./pages/Default/NotFound.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
 import Weeklymealplan from "./pages/mealplanner/WeeklyMealPlan/Weeklymealplan.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function AppContent() {
@@ -26,6 +28,18 @@ function AppContent() {
     return (
         <>
             <Menubar />
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+            />
 
             {/* pt-[68px] only applied when full navbar is visible so login/reg are full-screen */}
             <main
