@@ -10,6 +10,7 @@ import Recipes from "./pages/recipes/Recipes.jsx";
 import NotFound from "./pages/Default/NotFound.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
+import Weeklymealplan from "./pages/mealplanner/WeeklyMealPlan/Weeklymealplan.jsx";
 
 
 function AppContent() {
@@ -41,7 +42,7 @@ function AppContent() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/" element={<Login />} />
                     <Route path="/reg" element={<Registration />} />
-                    {/*<Route path="/weeklyplan" element={<WeeklyMealPlan />} />*/}
+                    <Route path="/weeklyplan" element={<Weeklymealplan />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
             </main>

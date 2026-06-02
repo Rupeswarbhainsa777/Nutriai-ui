@@ -10,6 +10,7 @@ const MealPlanner = () => {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
+
         const userId = localStorage.getItem("userId");
 
         if (userId) {
