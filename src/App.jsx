@@ -10,10 +10,10 @@ import Recipes from "./pages/recipes/Recipes.jsx";
 import NotFound from "./pages/Default/NotFound.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Registration from "./pages/Registration/Registration.jsx";
-import Weeklymealplan from "./pages/mealplanner/WeeklyMealPlan/Weeklymealplan.jsx";
+import Weeklymealplan from "./pages/WeeklyMealPlan/Weeklymealplan.jsx";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AddOrUpdateEntry from "./pages/mealplanner/AddOrUpdateEntry/AddOrUpdateEntry.jsx";
+import AddOrUpdateEntry from "./pages/AddOrUpdateEntry/AddOrUpdateEntry.jsx";
 
 
 function AppContent() {
@@ -58,8 +58,8 @@ function AppContent() {
                     <Route path="/" element={<Login/>}/>
                     <Route path="/reg" element={<Registration/>}/>
                     <Route path="/weeklyplan" element={<Weeklymealplan/>}/>
-                    <Route path="/addentry" element={<AddOrUpdateEntry />} />
-                        <Route path="/*" element={<NotFound />}/>
+                    <Route path="/addentry" element={<AddOrUpdateEntry/>}/>
+                    <Route path="/*" element={<NotFound/>}/>
                 </Routes>
             </main>
         </>

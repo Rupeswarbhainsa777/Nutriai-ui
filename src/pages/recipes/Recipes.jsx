@@ -234,7 +234,11 @@ const Recipes = () => {
     const [modal, setModal] = useState(null); // null | "add" | "edit" | "delete"
     const [selected, setSelected] = useState(null);
     const [toast, setToast] = useState(null);
-
+    const [searchTerm, setSearchTerm] = useState("");
+    const filteredRecipes = recipes.filter((recipe) =>
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        recipe.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
     /* ── Fetch ── */
     const fetchRecipes = async () => {
         setLoading(true);
@@ -312,7 +316,7 @@ const Recipes = () => {
 
             {/* ── Header ── */}
             <header className="sticky top-0 z-10 bg-stone-50/90 backdrop-blur-md border-b border-stone-200">
-                <div className="max-w-6xl mx-auto px-6 py-5 flex items-end justify-between gap-4">
+                <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
                     <div>
                         <p className="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-1">
                             Today's Collection
@@ -321,12 +325,23 @@ const Recipes = () => {
                             Recipes
                         </h1>
                     </div>
-                    <button
-                        onClick={() => setModal("add")}
-                        className="px-5 py-3 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-stone-700 active:scale-95 transition whitespace-nowrap"
-                    >
-                        + New Recipe
-                    </button>
+                    <div className="flex flex-col md:flex-row gap-3 items-stretch md:items-center">
+                        <input
+                            type="text"
+                            placeholder="Search recipes..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full md:w-72 px-4 py-3 rounded-xl border border-stone-200 bg-white text-sm outline-none focus:border-amber-600 focus:ring-2 focus:ring-amber-600/10"
+                        />
+
+                        <button
+                            onClick={() => setModal("add")}
+                            className="px-5 py-3 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-stone-700 active:scale-95 transition whitespace-nowrap"
+                        >
+                            + New Recipe
+                        </button>
+                    </div>
+
                 </div>
             </header>
 
@@ -342,9 +357,9 @@ const Recipes = () => {
                 )}
 
                 {/* Recipe grid */}
-                {!loading && recipes.length > 0 && (
+                {!loading && filteredRecipes.length > 0 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-                        {recipes.map((r) => (
+                        {filteredRecipes.map((r) => (
                             <RecipeCard
                                 key={r.id}
                                 recipe={r}
@@ -356,7 +371,7 @@ const Recipes = () => {
                 )}
 
                 {/* Empty state */}
-                {!loading && recipes.length === 0 && (
+                {!loading && filteredRecipes.length === 0 && (
                     <div className="flex flex-col items-center gap-3 py-24 text-stone-400">
                         <span className="text-5xl">🍽️</span>
                         <p className="text-base">No recipes yet. Add your first one!</p>

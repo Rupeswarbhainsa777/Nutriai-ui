@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getWeeklyView } from "../../../service/MealPlanner.js";
+import { getWeeklyView } from "../../service/MealPlanner.js";
 
 /* ── Meal type icons (inline SVG) ── */
 const mealIcons = {
