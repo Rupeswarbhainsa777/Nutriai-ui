@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { addOrUpdateEntry } from "../../service/MealPlanner.js";
-import { getAllRecipes } from "../../service/Recipes.js";
+import {useState, useEffect} from "react";
+import {addOrUpdateEntry} from "../../service/MealPlanner.js";
+import {getAllRecipes} from "../../service/Recipes.js";
 
 const AddOrUpdateEntry = () => {
     const [mealDate, setMealDate] = useState("");
@@ -44,13 +44,14 @@ const AddOrUpdateEntry = () => {
         setSearch(recipe.name);
         setShowResults([]);
     };
-
+    const mealPlanId = localStorage.getItem("mealPlanId");
+    const Id = Number(mealPlanId);
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await addOrUpdateEntry(
-                22,
+                Id,
                 mealDate,
                 mealType,
                 Number(recipeId)
@@ -79,22 +80,22 @@ const AddOrUpdateEntry = () => {
                 >
                     {/* Decorative blurred circles */}
                     <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-20"
-                         style={{ background: "radial-gradient(circle, #4ade80, transparent 70%)" }}/>
+                         style={{background: "radial-gradient(circle, #4ade80, transparent 70%)"}}/>
                     <div className="absolute -bottom-20 -right-12 w-72 h-72 rounded-full opacity-15"
-                         style={{ background: "radial-gradient(circle, #86efac, transparent 70%)" }}/>
+                         style={{background: "radial-gradient(circle, #86efac, transparent 70%)"}}/>
 
                     {/* Brand logo */}
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
-                                 style={{ background: "rgba(255,255,255,0.2)", backdropFilter: "blur(8px)" }}>
+                                 style={{background: "rgba(255,255,255,0.2)", backdropFilter: "blur(8px)"}}>
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
                                      stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M3 11l19-9-9 19-2-8-8-2z"/>
                                 </svg>
                             </div>
                             <span className="text-white font-bold text-2xl tracking-tight"
-                                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                                  style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
                                 NutriAI
                             </span>
                         </div>
@@ -106,11 +107,12 @@ const AddOrUpdateEntry = () => {
                     {/* Tagline block */}
                     <div className="relative z-10">
                         <h2 className="text-white text-3xl font-bold leading-tight mb-4"
-                            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                            style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
                             Log your meal,<br/>own your health.
                         </h2>
                         <p className="text-green-100 text-sm leading-relaxed opacity-90">
-                            Add or update a meal entry for any day. Search recipes, pick a meal type, and track your nutrition effortlessly.
+                            Add or update a meal entry for any day. Search recipes, pick a meal type, and track your
+                            nutrition effortlessly.
                         </p>
 
                         {/* Feature pills */}
@@ -118,7 +120,7 @@ const AddOrUpdateEntry = () => {
                             {["🍽️ Any Meal Type", "🔍 Recipe Search", "📅 Date Tracking"].map((f) => (
                                 <span key={f}
                                       className="text-xs text-white px-3 py-1 rounded-full font-medium"
-                                      style={{ background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)" }}>
+                                      style={{background: "rgba(255,255,255,0.18)", backdropFilter: "blur(6px)"}}>
                                     {f}
                                 </span>
                             ))}
@@ -132,18 +134,18 @@ const AddOrUpdateEntry = () => {
                     {/* Mobile brand */}
                     <div className="flex md:hidden items-center gap-2 mb-8">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-                             style={{ background: "linear-gradient(135deg, #22c55e, #16a34a)" }}>
+                             style={{background: "linear-gradient(135deg, #22c55e, #16a34a)"}}>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                                  stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M3 11l19-9-9 19-2-8-8-2z"/>
                             </svg>
                         </div>
                         <span className="font-bold text-xl text-green-700"
-                              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>NutriAI</span>
+                              style={{fontFamily: "'Playfair Display', Georgia, serif"}}>NutriAI</span>
                     </div>
 
                     <h1 className="text-2xl font-bold text-gray-900 mb-1"
-                        style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+                        style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
                         Add Meal Entry
                     </h1>
                     <p className="text-sm text-gray-500 mb-8">

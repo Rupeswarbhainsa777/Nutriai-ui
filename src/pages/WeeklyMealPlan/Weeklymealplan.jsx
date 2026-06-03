@@ -133,7 +133,8 @@ function SkeletonCard() {
    Main Component
 ══════════════════════════════════════════════════════════ */
 const WeeklyMealPlan = () => {
-    const id = 22;
+    const mealPlanId = localStorage.getItem("mealPlanId");
+    const id = Number(mealPlanId);
     const [data, setData]       = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError]     = useState(null);

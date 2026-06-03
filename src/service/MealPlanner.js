@@ -23,7 +23,9 @@ export const createMealPlan = async (userId, weekStartDate) => {
                 method: "POST",
                 headers: getAuthHeaders(),
             }
+
         );
+        console.log(response);
 
         if (!response.ok) {
             throw new Error("Failed to create meal plan");

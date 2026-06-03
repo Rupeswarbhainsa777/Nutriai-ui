@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 import { createMealPlan } from "../../service/MealPlanner.js";
 
 const MealPlanner = () => {
-    const [formData, setFormData] = useState({
-        userId: "",
-        weekStartDate: "",
-    });
+    const [formData, setFormData] = useState({userId: "", weekStartDate: "",});
 
     const [message, setMessage] = useState("");
 
@@ -39,6 +36,8 @@ const MealPlanner = () => {
                 formData.userId,
                 formData.weekStartDate
             );
+            localStorage.setItem("mealPlanId", response.id);
+
 
             setMessage(
                 response.message || "Meal Plan created successfully."
