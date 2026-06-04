@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {addOrUpdateEntry} from "../../service/MealPlanner.js";
 import {getAllRecipes} from "../../service/Recipes.js";
+import {toast, ToastContainer} from "react-toastify";
 
 const AddOrUpdateEntry = () => {
     const [mealDate, setMealDate] = useState("");
@@ -57,11 +58,13 @@ const AddOrUpdateEntry = () => {
                 Number(recipeId)
             );
 
-            console.log("Success:", response);
-            alert("Meal added successfully!");
+
+            toast.success("Meal added successfully!")
+
         } catch (error) {
-            console.error(error);
-            alert("Failed to add meal");
+
+
+            toast.error("Failed to add meal");
         }
     };
 
@@ -245,6 +248,14 @@ const AddOrUpdateEntry = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         </div>
     );
 };
