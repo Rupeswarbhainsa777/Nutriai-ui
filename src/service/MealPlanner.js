@@ -124,7 +124,7 @@ export const deleteEntry = async (
     return await response.json();
 };
 
-// Not Yet
+// Done
 export const deleteMealPlan = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}`,
