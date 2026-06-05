@@ -38,7 +38,7 @@ export const createMealPlan = async (userId, weekStartDate) => {
     }
 };
 
-// Not Yet
+// Done
 export const getMealPlanById = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}`,
@@ -138,7 +138,7 @@ export const deleteMealPlan = async (mealPlanId) => {
         throw new Error("Failed to delete meal plan");
     }
 
-    return await response.json();
+    return await response.text();
 };
 
 // Done
