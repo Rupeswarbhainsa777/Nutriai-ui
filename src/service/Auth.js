@@ -1,5 +1,5 @@
 const BASE_URL = "http://localhost:1003/api/auth";
-
+// Done
 export const registration = async (credentials) => {
     const response = await fetch(`${BASE_URL}/reg`, {
         method: "POST",
@@ -17,7 +17,7 @@ export const registration = async (credentials) => {
 
     return data;
 };
-
+// Done
 export const loginUser = async (credentials) => {
     const response = await fetch(`${BASE_URL}/login`, {
         method: "POST",

@@ -9,7 +9,7 @@ const getAuthHeaders = () => {
     };
 };
 
-// Get all recipes
+// Done
 export const getAllRecipes = async () => {
     try {
         const response = await fetch(`${BASE_URL}/getall`, {
@@ -27,7 +27,7 @@ export const getAllRecipes = async () => {
     }
 };
 
-// Get recipe by ID
+// Done
 export const getRecipeById = async (id) => {
     try {
         const response = await fetch(`${BASE_URL}/${id}`, {
@@ -45,7 +45,7 @@ export const getRecipeById = async (id) => {
     }
 };
 
-// Add new recipe
+// Done
 export const addRecipe = async (recipeData) => {
     try {
         const response = await fetch(`${BASE_URL}/add`, {
@@ -65,7 +65,7 @@ export const addRecipe = async (recipeData) => {
     }
 };
 
-// Update recipe
+// Done
 export const updateRecipe = async (id, recipeData) => {
     try {
         const response = await fetch(`${BASE_URL}/update/${id}`, {
@@ -85,7 +85,7 @@ export const updateRecipe = async (id, recipeData) => {
     }
 };
 
-// Delete recipe
+// Done
 export const deleteRecipe = async (id) => {
     try {
         const response = await fetch(`${BASE_URL}/delete/${id}`, {
@@ -98,8 +98,7 @@ export const deleteRecipe = async (id) => {
         }
 
         return await response.json();
-        // If backend returns text:
-        // return await response.text();
+
     } catch (error) {
         console.error("API Error:", error);
         throw error;

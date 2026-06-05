@@ -55,7 +55,7 @@ export const getMealPlanById = async (mealPlanId) => {
 };
 
 
-// Not yet
+// Done
 export const getMealPlanEntries = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}/entries`,
