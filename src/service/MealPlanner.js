@@ -98,7 +98,7 @@ export const addOrUpdateEntry = async (
     return await response.json();
 };
 
-// Not Yet
+// Done
 export const deleteEntry = async (
     mealPlanId,
     mealDate,
