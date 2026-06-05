@@ -15,6 +15,7 @@ import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddOrUpdateEntry from "./pages/AddOrUpdateEntry/AddOrUpdateEntry.jsx";
 import TestingPage from "./pages/TestingPages/TestingPage.jsx";
+import MealPlanDetails from "./pages/MealPlanDetails/MealPlanDetails.jsx";
 
 
 function AppContent() {
@@ -61,6 +62,7 @@ function AppContent() {
                     <Route path="/weeklyplan" element={<Weeklymealplan/>}/>
                     <Route path="/addentry" element={<AddOrUpdateEntry/>}/>
                     <Route path="/test" element={<TestingPage />} />
+                    <Route path="/mealplandetails" element={<MealPlanDetails />} />
                     <Route path="/*" element={<NotFound/>}/>
                 </Routes>
             </main>

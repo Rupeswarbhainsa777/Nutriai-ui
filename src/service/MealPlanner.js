@@ -9,7 +9,7 @@ const getAuthHeaders = () => {
     };
 };
 
-// POST /api/meal-plans/create?userId=&weekStartDate=
+// Done
 export const createMealPlan = async (userId, weekStartDate) => {
     try {
         const params = new URLSearchParams({
@@ -38,7 +38,7 @@ export const createMealPlan = async (userId, weekStartDate) => {
     }
 };
 
-// GET /api/meal-plans/{mealPlanId}
+// Not Yet
 export const getMealPlanById = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}`,
@@ -54,7 +54,8 @@ export const getMealPlanById = async (mealPlanId) => {
     return await response.json();
 };
 
-// GET /api/meal-plans/{mealPlanId}/entries
+
+// Not yet
 export const getMealPlanEntries = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}/entries`,
@@ -70,7 +71,7 @@ export const getMealPlanEntries = async (mealPlanId) => {
     return await response.json();
 };
 
-// POST /api/meal-plans/{mealPlanId}/entries
+// Done
 export const addOrUpdateEntry = async (
     mealPlanId,
     mealDate,
@@ -97,7 +98,7 @@ export const addOrUpdateEntry = async (
     return await response.json();
 };
 
-// DELETE /api/meal-plans/{mealPlanId}/entries
+// Not Yet
 export const deleteEntry = async (
     mealPlanId,
     mealDate,
@@ -123,7 +124,7 @@ export const deleteEntry = async (
     return await response.json();
 };
 
-// DELETE /api/meal-plans/{mealPlanId}
+// Not Yet
 export const deleteMealPlan = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}`,
@@ -140,7 +141,7 @@ export const deleteMealPlan = async (mealPlanId) => {
     return await response.json();
 };
 
-// GET /api/meal-plans/{mealPlanId}/weekly-view
+// Done
 export const getWeeklyView = async (mealPlanId) => {
     const response = await fetch(
         `${BASE_URL}/${mealPlanId}/weekly-view`,

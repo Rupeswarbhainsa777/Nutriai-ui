@@ -15,6 +15,7 @@ const TestingPage = () => {
         { name: "Registration", path: "/reg" },
         { name: "Weekly Meal Plan", path: "/weeklyplan" },
         { name: "Add Entry", path: "/addentry" },
+        { name: "Meal Plan Details", path: "/mealplandetails" },
         { name: "Not Found", path: "/random-page" },
     ];
 
