@@ -1,6 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {registration} from "../../service/Auth.js";
+import {toast, ToastContainer} from "react-toastify";
 
 const Registration = () => {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Registration = () => {
             preferredCuisine: ""
         }
     });
-    const [msg, setMsg] = useState("");
+
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -45,10 +46,12 @@ const Registration = () => {
         e.preventDefault();
         try {
             const data = await registration(formData);
-            setMsg("Registration successfully!");
+
+            toast.success("Registration successfully!");
             setTimeout(() => { navigate("/login"); }, 1000);
         } catch (e) {
             console.error(e);
+            toast.error("Registration error!");
         }
     };
 
@@ -63,12 +66,7 @@ const Registration = () => {
                 <h1 className="text-2xl font-bold text-gray-900 mb-1">Registration</h1>
                 <hr className="mb-6 border-gray-200"/>
 
-                {/* Success message */}
-                {msg && (
-                    <div className="mb-4 text-sm text-green-700 bg-green-50 border border-green-200 rounded px-4 py-2">
-                        ✓ {msg}
-                    </div>
-                )}
+
 
                 <form onSubmit={handleSubmit}>
 
@@ -154,6 +152,14 @@ const Registration = () => {
 
                 </form>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         </div>
     );
 };
