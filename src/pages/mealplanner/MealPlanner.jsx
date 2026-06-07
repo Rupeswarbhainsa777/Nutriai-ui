@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { createMealPlan } from "../../service/MealPlanner.js";
+import {useNavigate} from "react-router-dom";
+import {toast, ToastContainer} from "react-toastify";
 
 const MealPlanner = () => {
     const [formData, setFormData] = useState({userId: "", weekStartDate: "",});
 
-    const [message, setMessage] = useState("");
 
+
+    const navigte = useNavigate();
     useEffect(() => {
 
         const userId = localStorage.getItem("userId");
@@ -29,7 +32,6 @@ const MealPlanner = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setMessage("");
 
         try {
             const response = await createMealPlan(
@@ -39,24 +41,20 @@ const MealPlanner = () => {
             localStorage.setItem("mealPlanId", response.id);
 
 
-            setMessage(
-                response.message || "Meal Plan created successfully."
-            );
+          toast.success("Meal Plan created successfully.");
 
             setFormData((prev) => ({
                 ...prev,
                 weekStartDate: "",
             }));
+            navigte("/addentry")
+
         } catch (error) {
-            setMessage(
-                error.message || "Failed to create Meal Plan."
-            );
+              toast.error("Failed to create Meal Plan.");
         }
     };
 
-    const isError =
-        message &&
-        !message.toLowerCase().includes("success");
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
@@ -174,18 +172,7 @@ const MealPlanner = () => {
                         Set up your personalised weekly nutrition plan
                     </p>
 
-                    {message && (
-                        <div
-                            className={`mb-5 flex items-center gap-2 text-sm px-4 py-3 rounded-lg border ${
-                                isError
-                                    ? "text-red-700 bg-red-50 border-red-200"
-                                    : "text-green-700 bg-green-50 border-green-200"
-                            }`}
-                        >
-                            <span>{isError ? "✕" : "✓"}</span>
-                            <span>{message}</span>
-                        </div>
-                    )}
+
 
                     <form
                         onSubmit={handleSubmit}
@@ -237,6 +224,14 @@ const MealPlanner = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                pauseOnHover
+            />
         </div>
     );
 };
