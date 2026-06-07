@@ -5,7 +5,7 @@ import {toast, ToastContainer} from "react-toastify";
 
 const AddOrUpdateEntry = () => {
     const [mealDate, setMealDate] = useState("");
-    const [mealType, setMealType] = useState("BREAKFAST");
+    const [mealType, setMealType] = useState("");
     const [recipeId, setRecipeId] = useState("");
 
     const [search, setSearch] = useState("");
@@ -60,10 +60,14 @@ const AddOrUpdateEntry = () => {
 
 
             toast.success("Meal added successfully!")
+            setMealDate("");
+            setSearch("");
+            setMealType("");
+
 
         } catch (error) {
 
-
+            console.log(error)
             toast.error("Failed to add meal");
         }
     };
