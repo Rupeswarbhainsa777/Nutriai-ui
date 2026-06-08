@@ -2,7 +2,7 @@
 
 import { useNavigate } from "react-router-dom";
 
-const TestingPage = () => {
+const Admin = () => {
     const navigate = useNavigate();
 
     const routes = [
@@ -16,6 +16,7 @@ const TestingPage = () => {
         { name: "Weekly Meal Plan", path: "/weeklyplan" },
         { name: "Add Entry", path: "/addentry" },
         { name: "Meal Plan Details", path: "/mealplandetails" },
+        { name: "MealPlannerCombined", path: "/combined" },
         { name: "Not Found", path: "/random-page" },
     ];
 
@@ -40,4 +41,4 @@ const TestingPage = () => {
     );
 };
 
-export default TestingPage;
+export default Admin;

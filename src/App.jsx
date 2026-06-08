@@ -14,10 +14,10 @@ import Weeklymealplan from "./pages/WeeklyMealPlan/Weeklymealplan.jsx";
 import {ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddOrUpdateEntry from "./pages/AddOrUpdateEntry/AddOrUpdateEntry.jsx";
-import TestingPage from "./pages/TestingPages/TestingPage.jsx";
 import MealPlanDetails from "./pages/MealPlanDetails/MealPlanDetails.jsx";
-import {getMealPlanEntries} from "./service/MealPlanner.js";
 import MealPlanEntries from "./pages/MealPlanEntries/MealPlanEntries.jsx";
+import Admin from "./pages/Admin/TestingPage.jsx";
+import MealPlannerCombined from "./pages/MealPlannerCombined/MealPlannerCombined.jsx";
 
 
 function AppContent() {
@@ -63,9 +63,11 @@ function AppContent() {
                     <Route path="/reg" element={<Registration/>}/>
                     <Route path="/weeklyplan" element={<Weeklymealplan/>}/>
                     <Route path="/addentry" element={<AddOrUpdateEntry/>}/>
-                    <Route path="/test" element={<TestingPage />} />
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="/mealplandetails" element={<MealPlanDetails />} />
                     <Route path="/entries" element={<MealPlanEntries />} />
+                    <Route path="/combined" element={<MealPlannerCombined />} />
+
                     <Route path="/*" element={<NotFound/>}/>
                 </Routes>
             </main>

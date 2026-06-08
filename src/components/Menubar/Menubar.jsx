@@ -67,7 +67,7 @@ const icons = {
 const links = [
     {label: "Dashboard", path: "/dashboard", icon: icons.dashboard, end: true},
     {label: "Recipes", path: "/recipes", icon: icons.recipes, end: false},
-    {label: "Testing",path: "/test", icon: icons.test, end: false},
+    {label: "Admin",path: "/admin", icon: icons.test, end: false},
     {label: "AI Assistant", path: "/ai-assistant", icon: icons.ai, end: false},
     {label: "Profile", path: "/profile", icon: icons.profile, end: false},
     {label: "Weekly Meal Plan", path: "/weeklyplan", icon: icons.profile, end: false},
