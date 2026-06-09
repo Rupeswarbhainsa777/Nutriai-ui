@@ -60,9 +60,6 @@ const AddOrUpdateEntry = () => {
 
 
             toast.success("Meal added successfully!")
-            setMealDate("");
-            setSearch("");
-            setMealType("");
 
 
         } catch (error) {
