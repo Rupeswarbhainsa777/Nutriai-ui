@@ -1,9 +1,10 @@
-import {useEffect, useState} from "react";
-import {getWeeklyView} from "../../service/MealPlanner.js";
+import { useEffect, useState } from "react";
+import { getWeeklyView } from "../../service/MealPlanner.js";
 
 const Dashboard = () => {
     let mealPlanId = localStorage.getItem("mealPlanId");
     let id = Number(mealPlanId);
+
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,61 +21,61 @@ const Dashboard = () => {
                 setLoading(false);
             }
         };
+
         fetchData();
     }, [id]);
-    console.log(data)
+
     const today = new Date().toISOString().split("T")[0];
-    console.log(today);
 
     return (
-
         <div>
-            {data?.days?.map((item, idx) =>
-                item.date === today ? (
-                    <div key={idx} className="space-y-3">
+            <div>
+                {data?.days?.map((item, idx) =>
+                    item.date === today ? (
+                        <div key={idx}>
+                            <div>
+                                <h3>{item.breakfast?.name || "Breakfast not assigned"}</h3>
+                                <h4>Breakfast 7:30 AM</h4>
+                                <h4>{item.breakfast?.calories || 0} kcal</h4>
+                            </div>
 
-                        <div className="bg-yellow-50 p-3 rounded-lg border">
-                            <h3>{item.breakfast?.name || "Breakfast not assigned"}</h3>
+                            <div>
+                                <h3>{item.lunch?.name || "Lunch not assigned"}</h3>
+                                <h4>Lunch 12:00 PM</h4>
+                                <h4>{item.lunch?.calories || 0} kcal</h4>
+                            </div>
+
+                            <div>
+                                <h3>{item.snack?.name || "Snack not assigned"}</h3>
+                                <h4>Snack 4:00 PM</h4>
+                                <h4>{item.snack?.calories || 0} kcal</h4>
+                            </div>
+
+                            <div>
+                                <h3>{item.dinner?.name || "Dinner not assigned"}</h3>
+                                <h4>Dinner 8:00 PM</h4>
+                                <h4>{item.dinner?.calories || 0} kcal</h4>
+                            </div>
                         </div>
+                    ) : null
+                )}
+            </div>
 
-                        <div className="bg-green-50 p-3 rounded-lg border">
-                            <h3>{item.lunch?.name || "Lunch not assigned"}</h3>
-                        </div>
-
-                        <div className="bg-orange-50 p-3 rounded-lg border">
-                            <h3>{item.snack?.name || "Snack not assigned"}</h3>
-                        </div>
-
-                        <div className="bg-blue-50 p-3 rounded-lg border">
-                            <h3>{item.dinner?.name || "Dinner not assigned"}</h3>
-                        </div>
-
-                    </div>
-                ) : null
-            )}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div>
                 {data?.days?.map((day, index) => (
-                    <div
-                        key={index}
-                        className="bg-white p-4 rounded-xl shadow border border-gray-100"
-                    >
-                        <h3 className="font-semibold text-gray-700">
+                    <div key={index}>
+                        <h3>
                             {new Date(day.date).toLocaleDateString("en-IN", {
                                 day: "numeric",
                                 month: "short",
                             })}
                         </h3>
 
-                        <p className="text-2xl font-bold text-green-600 mt-2">
-                            {day.totalCalories}
-                        </p>
-
-                        <p className="text-sm text-gray-500">Calories</p>
+                        <p>{day.totalCalories}</p>
+                        <p>Calories</p>
                     </div>
                 ))}
             </div>
-
         </div>
     );
 };
