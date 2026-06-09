@@ -1,6 +1,66 @@
 import { useEffect, useState } from "react";
 import { getWeeklyView } from "../../service/MealPlanner.js";
 
+import {userDetails} from "../../service/User.js";
+
+const UserData = ()=>{
+
+    const [userData, setUserData] = useState(null);
+    const responseId = localStorage.getItem("userId");
+    const id = Number(responseId)
+    const defaultUser = {
+        name: "N/A",
+        goal: "N/A",
+        dietaryRestrictions: "N/A",
+    };
+    useEffect(() => {
+        userDetails({ id }).then((data) => {
+            setUserData(data);
+        }).catch((error) => {
+            console.error("Error fetching user details:", error);
+            setUserData(defaultUser)
+        });
+    }, [id]);
+
+    return (
+        <div>
+            <h1>Hii {userData?.name}</h1>
+            <h1>Goal {userData?.goal}</h1>
+            <span className="text-gray-900">{userData?.dietaryRestrictions}</span>
+        </div>
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const Dashboard = () => {
     let mealPlanId = localStorage.getItem("mealPlanId");
     let id = Number(mealPlanId);
@@ -29,6 +89,8 @@ const Dashboard = () => {
 
     return (
         <div>
+            <UserData />
+
             <div>
                 {data?.days?.map((item, idx) =>
                     item.date === today ? (
