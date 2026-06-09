@@ -2,8 +2,8 @@ import {useEffect, useState} from "react";
 import {getWeeklyView} from "../../service/MealPlanner.js";
 
 const Dashboard = () => {
-    const mealPlanId = localStorage.getItem("mealPlanId");
-    const id = Number(mealPlanId);
+    let mealPlanId = localStorage.getItem("mealPlanId");
+    let id = Number(mealPlanId);
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -23,11 +23,35 @@ const Dashboard = () => {
         fetchData();
     }, [id]);
     console.log(data)
+    const today = new Date().toISOString().split("T")[0];
+    console.log(today);
 
     return (
 
         <div>
+            {data?.days?.map((item, idx) =>
+                item.date === today ? (
+                    <div key={idx} className="space-y-3">
 
+                        <div className="bg-yellow-50 p-3 rounded-lg border">
+                            <h3>{item.breakfast?.name || "Breakfast not assigned"}</h3>
+                        </div>
+
+                        <div className="bg-green-50 p-3 rounded-lg border">
+                            <h3>{item.lunch?.name || "Lunch not assigned"}</h3>
+                        </div>
+
+                        <div className="bg-orange-50 p-3 rounded-lg border">
+                            <h3>{item.snack?.name || "Snack not assigned"}</h3>
+                        </div>
+
+                        <div className="bg-blue-50 p-3 rounded-lg border">
+                            <h3>{item.dinner?.name || "Dinner not assigned"}</h3>
+                        </div>
+
+                    </div>
+                ) : null
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {data?.days?.map((day, index) => (
