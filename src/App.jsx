@@ -18,6 +18,7 @@ import MealPlanDetails from "./pages/MealPlanDetails/MealPlanDetails.jsx";
 import MealPlanEntries from "./pages/MealPlanEntries/MealPlanEntries.jsx";
 import Admin from "./pages/Admin/TestingPage.jsx";
 import MealPlannerCombined from "./pages/MealPlannerCombined/MealPlannerCombined.jsx";
+import Landing from "./pages/Landing/Landing.jsx";
 
 
 function AppContent() {
@@ -66,6 +67,7 @@ function AppContent() {
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/mealplandetails" element={<MealPlanDetails />} />
                     <Route path="/entries" element={<MealPlanEntries />} />
+                    <Route path="/landing" element={<Landing />} />
                     <Route path="/combined" element={<MealPlannerCombined />} />
 
                     <Route path="/*" element={<NotFound/>}/>
