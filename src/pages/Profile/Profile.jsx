@@ -5,8 +5,10 @@ import { userDetails } from "../../service/User.js";
 const Profile = () => {
     const [user, setUser] = useState(null);
     const responseId = localStorage.getItem("userId");
-    const id = Number(responseId)
-    console.log(id)
+    const id = Number(responseId);
+
+    console.log(id);
+
     const defaultUser = {
         name: "N/A",
         email: "N/A",
@@ -16,65 +18,81 @@ const Profile = () => {
         weight: "N/A",
         age: "N/A",
     };
+
     useEffect(() => {
-        userDetails({ id }).then((data) => {
-            setUser(data);
-        }).catch((error) => {
-            console.error("Error fetching user details:", error);
-            setUser(defaultUser)
-        });
+        userDetails({ id })
+            .then((data) => {
+                setUser(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching user details:", error);
+                setUser(defaultUser);
+            });
     }, [id]);
 
     return (
-        <div className="min-h-screen bg-gray-100 py-10 px-4">
-            <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
-                <h1 className="text-4xl font-bold text-center text-gray-800 mb-8 border-b-4 border-indigo-500 pb-4">
-                    Profile
-                </h1>
-
-                {user ? (
-                    <div className="grid grid-cols-1 gap-4">
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Name:</span>
-                            <span className="text-gray-900">{user.name}</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Email:</span>
-                            <span className="text-gray-900">{user.email}</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Goal:</span>
-                            <span className="text-gray-900">{user.goal}</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Dietary Restrictions:</span>
-                            <span className="text-gray-900">{user.dietaryRestrictions}</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Height:</span>
-                            <span className="text-gray-900">{user.height} cm</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Weight:</span>
-                            <span className="text-gray-900">{user.weight} kg</span>
-                        </div>
-
-                        <div className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-xl p-4 hover:bg-indigo-50 hover:border-indigo-400 transition duration-300">
-                            <span className="font-semibold text-gray-600">Age:</span>
-                            <span className="text-gray-900">{user.age}</span>
-                        </div>
-                    </div>
-                ) : (
-                    <p className="text-center text-gray-500 text-lg py-10">
-                        Loading...
+        <div className="min-h-screen bg-gray-50 py-12 px-4">
+            <div className="max-w-4xl mx-auto">
+                {/* Header */}
+                <div className="mb-8 text-center">
+                    <h1 className="text-4xl font-semibold text-gray-900">
+                        Profile
+                    </h1>
+                    <p className="mt-2 text-sm text-gray-500">
+                        Manage and view your personal information
                     </p>
-                )}
+                </div>
+
+                {/* Profile Card */}
+                <div className="bg-white border border-gray-200 rounded-md overflow-hidden">
+                    {user ? (
+                        <div>
+                            <div className="px-6 py-5 border-b border-gray-200">
+                                <h2 className="text-lg font-medium text-gray-900">
+                                    Personal Information
+                                </h2>
+                            </div>
+
+                            <div className="divide-y divide-gray-200">
+                                <ProfileRow label="Name" value={user.name} />
+                                <ProfileRow label="Email" value={user.email} />
+                                <ProfileRow label="Goal" value={user.goal} />
+                                <ProfileRow
+                                    label="Dietary Restrictions"
+                                    value={user.dietaryRestrictions}
+                                />
+                                <ProfileRow
+                                    label="Height"
+                                    value={`${user.height} cm`}
+                                />
+                                <ProfileRow
+                                    label="Weight"
+                                    value={`${user.weight} kg`}
+                                />
+                                <ProfileRow label="Age" value={user.age} />
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="py-16 text-center text-gray-500">
+                            Loading...
+                        </div>
+                    )}
+                </div>
             </div>
+        </div>
+    );
+};
+
+const ProfileRow = ({ label, value }) => {
+    return (
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between px-6 py-5 hover:bg-gray-50 transition-colors duration-200">
+            <span className="text-sm font-medium text-gray-600 mb-1 sm:mb-0">
+                {label}
+            </span>
+
+            <span className="text-sm text-gray-900 font-medium break-words">
+                {value}
+            </span>
         </div>
     );
 };
