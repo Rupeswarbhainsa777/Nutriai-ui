@@ -54,22 +54,20 @@ function AppContent() {
                 }`}
             >
                 <Routes>
+                    <Route path="/" element={<Landing />} />
                     <Route path="/dashboard" element={<Dashboard/>}/>
                     <Route path="/meal-planner" element={<MealPlanner/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/ai-assistant" element={<AIAssistant/>}/>
                     <Route path="/recipes" element={<Recipes/>}/>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/" element={<Login/>}/>
                     <Route path="/reg" element={<Registration/>}/>
                     <Route path="/weeklyplan" element={<Weeklymealplan/>}/>
                     <Route path="/addentry" element={<AddOrUpdateEntry/>}/>
                     <Route path="/admin" element={<Admin />} />
                     <Route path="/mealplandetails" element={<MealPlanDetails />} />
                     <Route path="/entries" element={<MealPlanEntries />} />
-                    <Route path="/landing" element={<Landing />} />
                     <Route path="/combined" element={<MealPlannerCombined />} />
-
                     <Route path="/*" element={<NotFound/>}/>
                 </Routes>
             </main>
