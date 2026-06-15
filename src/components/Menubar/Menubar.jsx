@@ -161,10 +161,10 @@ export default function Menubar() {
         <>
             {/* ── Fixed Navbar ── */}
             <nav
-                className={`fixed top-0 left-0 right-0 z-[9999] h-[68px] border-b border-black/[0.07] transition-all duration-300
+                className={`fixed top-0 left-0 right-0 z-[9999] h-[68px] border-b transition-all duration-500 ease-out
                     ${scrolled
-                    ? "bg-white/92 shadow-[0_4px_32px_rgba(0,0,0,0.10)] backdrop-blur-[18px] saturate-160"
-                    : "bg-white/72 shadow-[0_2px_24px_rgba(0,0,0,0.06)] backdrop-blur-[18px] saturate-160"
+                    ? "bg-white/95 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-2xl border-black/[0.06]"
+                    : "bg-white/70 shadow-[0_1px_2px_rgba(0,0,0,0.02),0_2px_16px_rgba(0,0,0,0.03)] backdrop-blur-2xl border-black/[0.04]"
                 }`}
                 role="navigation"
                 aria-label="Main navigation"
@@ -172,11 +172,11 @@ export default function Menubar() {
                 <div className="max-w-[1280px] mx-auto px-6 h-full flex items-center gap-10">
 
                     {/* Brand */}
-                    <NavLink to="/" className="flex items-center gap-2 no-underline flex-shrink-0 group"
+                    <NavLink to="/" className="flex items-center gap-2.5 no-underline flex-shrink-0 group"
                              aria-label="NutriAI Home">
                         <span
-                            className="w-9 h-9 rounded-[10px] flex items-center justify-center shadow-[0_2px_10px_rgba(34,197,94,0.35)] transition-all duration-200
-                                group-hover:scale-[1.08] group-hover:-rotate-3 group-hover:shadow-[0_4px_18px_rgba(34,197,94,0.45)]"
+                            className="w-9 h-9 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(34,197,94,0.3),0_1px_2px_rgba(34,197,94,0.2)] transition-all duration-300
+                                group-hover:scale-110 group-hover:-rotate-3 group-hover:shadow-[0_4px_16px_rgba(34,197,94,0.4)]"
                             style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
                             aria-hidden="true"
                         >
@@ -198,18 +198,18 @@ export default function Menubar() {
 
                     {/* Desktop links */}
                     {showFullNav && (
-                        <ul className="flex items-center gap-1 flex-1 list-none m-0 p-0">
+                        <ul className="flex items-center gap-0.5 flex-1 list-none m-0 p-0">
                             {links.map(({label, path, icon, end}) => (
                                 <li key={path}>
                                     <NavLink
                                         to={path}
                                         end={end}
                                         className={({isActive}) =>
-                                            `group relative flex items-center gap-1.5 px-3.5 py-[0.45rem] rounded-lg text-[0.815rem] font-medium
-                                            tracking-[0.04em] uppercase no-underline whitespace-nowrap transition-all duration-200
+                                            `group relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[0.8rem] font-semibold
+                                            tracking-[0.03em] uppercase no-underline whitespace-nowrap transition-all duration-300
                                             ${isActive
-                                                ? "text-[#15803d] bg-green-500/10 font-semibold after:content-[''] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[2.5px] after:rounded-full after:bg-gradient-to-r after:from-green-400 after:to-green-600"
-                                                : "text-[#78716c] hover:text-[#15803d] hover:bg-green-500/[0.08]"
+                                                ? "text-green-700 bg-green-50 after:content-[''] after:absolute after:bottom-0.5 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[2px] after:rounded-full after:bg-gradient-to-r after:from-green-400 after:to-green-600"
+                                                : "text-stone-500 hover:text-green-700 hover:bg-green-50/70"
                                             }`
                                         }
                                     >
@@ -226,9 +226,9 @@ export default function Menubar() {
                         <div className="flex items-center gap-3 ml-auto flex-shrink-0">
                             <NavLink
                                 to="/meal-planner"
-                                className="hidden md:flex items-center gap-1.5 px-[1.1rem] py-[0.45rem] rounded-lg text-white text-[0.815rem] font-semibold
-                                    tracking-[0.03em] no-underline shadow-[0_2px_10px_rgba(34,197,94,0.3)] transition-all duration-[180ms]
-                                    hover:-translate-y-px hover:shadow-[0_4px_18px_rgba(34,197,94,0.4)] hover:opacity-93 active:translate-y-0"
+                                className="hidden md:flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-white text-[0.8rem] font-semibold
+                                    tracking-wide no-underline shadow-[0_2px_8px_rgba(34,197,94,0.25),0_1px_2px_rgba(34,197,94,0.2)] transition-all duration-300
+                                    hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(34,197,94,0.35)] active:translate-y-0 active:scale-[0.98]"
                                 style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
                                 aria-label="Plan your meal"
                             >
@@ -242,20 +242,20 @@ export default function Menubar() {
                     {showFullNav && (
                         <button
                             id="mobile-menu-toggle"
-                            className={`md:hidden flex flex-col justify-center items-center w-10 h-10 border-none rounded-lg cursor-pointer gap-[5px]
-                                ml-auto flex-shrink-0 transition-colors duration-200
-                                ${open ? "bg-green-500/10" : "bg-black/[0.04] hover:bg-green-500/10"}`}
+                            className={`md:hidden flex flex-col justify-center items-center w-10 h-10 border-none rounded-xl cursor-pointer gap-[5px]
+                                ml-auto flex-shrink-0 transition-all duration-300
+                                ${open ? "bg-green-50" : "bg-stone-100/60 hover:bg-green-50"}`}
                             onClick={() => setOpen(prev => !prev)}
                             aria-expanded={open}
                             aria-controls="mobile-menu"
                             aria-label={open ? "Close menu" : "Open menu"}
                         >
                             <span
-                                className={`block w-5 h-0.5 rounded-sm bg-[#57534e] transition-transform duration-300 origin-center ${open ? "translate-y-[7px] rotate-45" : ""}`}/>
+                                className={`block w-5 h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "translate-y-[7px] rotate-45" : ""}`}/>
                             <span
-                                className={`block h-0.5 rounded-sm bg-[#57534e] transition-all duration-200 origin-center ${open ? "w-0 opacity-0" : "w-5 opacity-100"}`}/>
+                                className={`block h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "w-0 opacity-0" : "w-5 opacity-100"}`}/>
                             <span
-                                className={`block w-5 h-0.5 rounded-sm bg-[#57534e] transition-transform duration-300 origin-center ${open ? "-translate-y-[7px] -rotate-45" : ""}`}/>
+                                className={`block w-5 h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "-translate-y-[7px] -rotate-45" : ""}`}/>
                         </button>
                     )}
                 </div>
@@ -265,10 +265,10 @@ export default function Menubar() {
             {showFullNav && (
                 <div
                     id="mobile-menu"
-                    className={`fixed top-[68px] left-0 right-0 bg-white/97 backdrop-blur-[16px] border-b border-black/[0.08]
-                        shadow-[0_8px_32px_rgba(0,0,0,0.10)] px-6 pt-4 pb-6 flex flex-col gap-1 z-[9998]
-                        transition-all duration-[250ms]
-                        ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+                    className={`fixed top-[68px] left-0 right-0 bg-white/98 backdrop-blur-2xl border-b border-stone-100
+                        shadow-[0_8px_40px_rgba(0,0,0,0.08)] px-6 pt-5 pb-7 flex flex-col gap-1.5 z-[9998]
+                        transition-all duration-300 ease-out
+                        ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-3 pointer-events-none"}`}
                     aria-hidden={!open}
                     role="dialog"
                     aria-modal="true"
@@ -281,11 +281,11 @@ export default function Menubar() {
                             end={end}
                             onClick={() => setOpen(false)}
                             className={({isActive}) =>
-                                `flex items-center gap-3 px-4 py-3 rounded-[10px] text-[0.9rem] font-medium
-                                tracking-[0.04em] uppercase no-underline transition-all duration-200
+                                `flex items-center gap-3 px-4 py-3.5 rounded-xl text-[0.88rem] font-semibold
+                                tracking-[0.03em] uppercase no-underline transition-all duration-300
                                 ${isActive
-                                    ? "text-[#15803d] bg-green-500/[0.08] font-semibold [&>svg]:opacity-100"
-                                    : "text-[#57534e] hover:text-[#15803d] hover:bg-green-500/[0.08] [&>svg]:hover:opacity-100"
+                                    ? "text-green-700 bg-green-50 [&>svg]:opacity-100"
+                                    : "text-stone-500 hover:text-green-700 hover:bg-green-50/70 [&>svg]:hover:opacity-100"
                                 }`
                             }
                         >
@@ -294,13 +294,13 @@ export default function Menubar() {
                         </NavLink>
                     ))}
 
-                    <div className="h-px bg-black/[0.06] my-2 rounded-sm"/>
+                    <div className="h-px bg-stone-100 my-3 rounded-sm"/>
 
                     <NavLink
                         to="/meal-planner"
-                        className="flex items-center justify-center gap-1.5 px-[1.1rem] py-[0.45rem] rounded-lg text-white text-[0.815rem]
-                            font-semibold tracking-[0.03em] no-underline mt-1 shadow-[0_2px_10px_rgba(34,197,94,0.3)]
-                            transition-all duration-[180ms] hover:opacity-93 active:scale-[0.98]"
+                        className="flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl text-white text-[0.85rem]
+                            font-semibold tracking-wide no-underline mt-1 shadow-[0_2px_8px_rgba(34,197,94,0.25)]
+                            transition-all duration-300 hover:shadow-[0_4px_16px_rgba(34,197,94,0.35)] active:scale-[0.98]"
                         style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
                         onClick={() => setOpen(false)}
                     >
