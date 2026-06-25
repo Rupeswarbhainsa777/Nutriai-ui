@@ -50,7 +50,7 @@ function AppContent() {
             {/* pt-[68px] only applied when full navbar is visible so login/reg are full-screen */}
             <main
                 className={`w-full overflow-x-hidden${
-                    showFullNav ? " pt-[68px] min-h-[calc(100vh-68px)]" : " min-h-screen"
+                    showFullNav ? " pt-[56px] min-h-[calc(100vh-56px)]" : " min-h-screen"
                 }`}
             >
                 <Routes>

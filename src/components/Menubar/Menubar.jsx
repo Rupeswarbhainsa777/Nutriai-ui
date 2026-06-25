@@ -1,62 +1,59 @@
 import {useState, useEffect} from "react";
 import {NavLink, useLocation} from "react-router-dom";
 
-/* ─── Icons ─────────────────────────────────────────────── */
+/* ─── Icons (Cal.com-style — thin, 1.5 stroke) ───────────────── */
 const icons = {
     dashboard: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-[15px] h-[15px] flex-shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
-            <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
+             className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
         </svg>
     ),
     recipes: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-[15px] h-[15px] flex-shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
-            <path d="M12 2C7 2 3 7 3 12s4 10 9 10 9-4.5 9-10S17 2 12 2z" stroke="currentColor" strokeWidth="1.8"
-                  fill="none"/>
-            <path d="M8 12s1-3 4-3 4 3 4 3" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
-            <path d="M9 9V7M15 9V7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+             className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2C7 2 3 7 3 12s4 10 9 10 9-4.5 9-10S17 2 12 2z"/>
+            <path d="M8 12s1-3 4-3 4 3 4 3"/>
+            <path d="M9 9V7M15 9V7"/>
         </svg>
     ),
     mealPlanner: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-[15px] h-[15px] flex-shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
-            <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M3 9h18" stroke="currentColor" strokeWidth="1.8"/>
-            <path d="M8 4V2M16 4V2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-            <path d="M7 13h4M7 17h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+             className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="4" width="18" height="17" rx="2"/>
+            <path d="M3 9h18"/>
+            <path d="M8 4V2M16 4V2"/>
+            <path d="M7 13h4M7 17h8"/>
         </svg>
     ),
     ai: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-[15px] h-[15px] flex-shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
-            <path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.8" fill="none"
-                  strokeLinecap="round"/>
-            <path d="M17 9l2-2M19 9l-2-2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+             className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            <path d="M17 9l2-2M19 9l-2-2"/>
             <circle cx="20" cy="6" r="1.2" fill="currentColor"/>
         </svg>
     ),
     profile: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-[15px] h-[15px] flex-shrink-0 opacity-70 transition-opacity duration-200 group-hover:opacity-100">
-            <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.8" fill="none"
-                  strokeLinecap="round"/>
+             className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
     ),
     leaf: (
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-             className="w-5 h-5 text-white fill-none stroke-current stroke-[1.8] [stroke-linecap:round] [stroke-linejoin:round]">
+             className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 3C7 3 4 7 4 11c0 5 5 10 8 10 1.5 0 4-2 6-5 1.5-2.5 2-5 2-7 0-3-3-6-8-6z"/>
             <path d="M4 21l8-8"/>
         </svg>
     ),
     plus: (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
              strokeLinecap="round">
             <path d="M12 5v14M5 12h14"/>
         </svg>
@@ -74,47 +71,44 @@ const links = [
 ];
 
 /* ─── Mobile link icon style override ──────────────────── */
-const mobileIconCls = "w-[18px] h-[18px] flex-shrink-0 opacity-60 transition-opacity duration-200";
+const mobileIconCls = "w-4 h-4 flex-shrink-0";
 
 const mobileIcons = {
     dashboard: (
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls}>
-            <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" fill="none"/>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
         </svg>
     ),
     recipes: (
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls}>
-            <path d="M12 2C7 2 3 7 3 12s4 10 9 10 9-4.5 9-10S17 2 12 2z" stroke="currentColor" strokeWidth="1.8"
-                  fill="none"/>
-            <path d="M8 12s1-3 4-3 4 3 4 3" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round"/>
-            <path d="M9 9V7M15 9V7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2C7 2 3 7 3 12s4 10 9 10 9-4.5 9-10S17 2 12 2z"/>
+            <path d="M8 12s1-3 4-3 4 3 4 3"/>
+            <path d="M9 9V7M15 9V7"/>
         </svg>
     ),
     mealPlanner: (
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls}>
-            <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M3 9h18" stroke="currentColor" strokeWidth="1.8"/>
-            <path d="M8 4V2M16 4V2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
-            <path d="M7 13h4M7 17h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="3" y="4" width="18" height="17" rx="2"/>
+            <path d="M3 9h18"/>
+            <path d="M8 4V2M16 4V2"/>
+            <path d="M7 13h4M7 17h8"/>
         </svg>
     ),
     ai: (
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls}>
-            <path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.8" fill="none"
-                  strokeLinecap="round"/>
-            <path d="M17 9l2-2M19 9l-2-2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            <path d="M17 9l2-2M19 9l-2-2"/>
             <circle cx="20" cy="6" r="1.2" fill="currentColor"/>
         </svg>
     ),
     profile: (
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls}>
-            <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" fill="none"/>
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" strokeWidth="1.8" fill="none"
-                  strokeLinecap="round"/>
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={mobileIconCls} fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
         </svg>
     ),
 };
@@ -125,7 +119,7 @@ const mobileLinksConfig = [
     {label: "Meal Planner", path: "/meal-planner", icon: mobileIcons.mealPlanner, end: false},
     {label: "AI Assistant", path: "/ai-assistant", icon: mobileIcons.ai, end: false},
     {label: "Profile", path: "/profile", icon: mobileIcons.profile, end: false},
-    {label: "Weekly Meal Plan", path: "/weeklyplan", icon: mobileIcons.profile, end: false}, // Add this
+    {label: "Weekly Meal Plan", path: "/weeklyplan", icon: mobileIcons.profile, end: false},
 ];
 
 /* ─── Component ──────────────────────────────────────────── */
@@ -159,61 +153,50 @@ export default function Menubar() {
 
     return (
         <>
-            {/* ── Fixed Navbar ── */}
+            {/* ── Fixed Navbar (Cal.com: solid white, subtle border) ── */}
             <nav
-                className={`fixed top-0 left-0 right-0 z-[9999] h-[68px] border-b transition-all duration-500 ease-out
+                className={`fixed top-0 left-0 right-0 z-[9999] h-[56px] border-b transition-all duration-150
                     ${scrolled
-                    ? "bg-white/95 shadow-[0_1px_3px_rgba(0,0,0,0.04),0_4px_24px_rgba(0,0,0,0.06)] backdrop-blur-2xl border-black/[0.06]"
-                    : "bg-white/70 shadow-[0_1px_2px_rgba(0,0,0,0.02),0_2px_16px_rgba(0,0,0,0.03)] backdrop-blur-2xl border-black/[0.04]"
+                    ? "bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] border-gray-200"
+                    : "bg-white border-gray-200"
                 }`}
                 role="navigation"
                 aria-label="Main navigation"
             >
-                <div className="max-w-[1280px] mx-auto px-6 h-full flex items-center gap-10">
+                <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-full flex items-center gap-8">
 
-                    {/* Brand */}
-                    <NavLink to="/" className="flex items-center gap-2.5 no-underline flex-shrink-0 group"
+                    {/* Brand (Cal.com: flat text, no gradient) */}
+                    <NavLink to="/" className="flex items-center gap-2 no-underline flex-shrink-0 group"
                              aria-label="NutriAI Home">
                         <span
-                            className="w-9 h-9 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(34,197,94,0.3),0_1px_2px_rgba(34,197,94,0.2)] transition-all duration-300
-                                group-hover:scale-110 group-hover:-rotate-3 group-hover:shadow-[0_4px_16px_rgba(34,197,94,0.4)]"
-                            style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
+                            className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-900 transition-transform duration-150
+                                group-hover:scale-105"
                             aria-hidden="true"
                         >
                             {icons.leaf}
                         </span>
-                        <span
-                            className="text-[1.35rem] font-bold tracking-tight leading-none"
-                            style={{
-                                fontFamily: "'Playfair Display', Georgia, serif",
-                                background: "linear-gradient(135deg, #16a34a 0%, #15803d 60%, #166534 100%)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
+                        <span className="text-lg font-bold tracking-tight leading-none text-gray-900">
                             NutriAI
                         </span>
                     </NavLink>
 
-                    {/* Desktop links */}
+                    {/* Desktop links (Cal.com: text-only, no uppercase, subtle hover) */}
                     {showFullNav && (
-                        <ul className="flex items-center gap-0.5 flex-1 list-none m-0 p-0">
-                            {links.map(({label, path, icon, end}) => (
+                        <ul className="hidden md:flex items-center gap-1 flex-1 list-none m-0 p-0">
+                            {links.map(({label, path, end}) => (
                                 <li key={path}>
                                     <NavLink
                                         to={path}
                                         end={end}
                                         className={({isActive}) =>
-                                            `group relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[0.8rem] font-semibold
-                                            tracking-[0.03em] uppercase no-underline whitespace-nowrap transition-all duration-300
+                                            `relative flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium
+                                            no-underline whitespace-nowrap transition-colors duration-150
                                             ${isActive
-                                                ? "text-green-700 bg-green-50 after:content-[''] after:absolute after:bottom-0.5 after:left-1/2 after:-translate-x-1/2 after:w-5 after:h-[2px] after:rounded-full after:bg-gradient-to-r after:from-green-400 after:to-green-600"
-                                                : "text-stone-500 hover:text-green-700 hover:bg-green-50/70"
+                                                ? "text-gray-900 bg-gray-100"
+                                                : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                                             }`
                                         }
                                     >
-                                        {icon}
                                         {label}
                                     </NavLink>
                                 </li>
@@ -221,15 +204,14 @@ export default function Menubar() {
                         </ul>
                     )}
 
-                    {/* CTA button (desktop) */}
+                    {/* CTA button (Cal.com: solid dark, no gradient) */}
                     {showFullNav && (
-                        <div className="flex items-center gap-3 ml-auto flex-shrink-0">
+                        <div className="hidden md:flex items-center gap-3 ml-auto flex-shrink-0">
                             <NavLink
                                 to="/meal-planner"
-                                className="hidden md:flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-white text-[0.8rem] font-semibold
-                                    tracking-wide no-underline shadow-[0_2px_8px_rgba(34,197,94,0.25),0_1px_2px_rgba(34,197,94,0.2)] transition-all duration-300
-                                    hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(34,197,94,0.35)] active:translate-y-0 active:scale-[0.98]"
-                                style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
+                                className="flex items-center gap-1.5 px-4 py-2 rounded-md text-white text-sm font-medium
+                                    no-underline bg-gray-900 transition-all duration-150
+                                    hover:bg-gray-800 active:scale-[0.98]"
                                 aria-label="Plan your meal"
                             >
                                 {icons.plus}
@@ -242,33 +224,33 @@ export default function Menubar() {
                     {showFullNav && (
                         <button
                             id="mobile-menu-toggle"
-                            className={`md:hidden flex flex-col justify-center items-center w-10 h-10 border-none rounded-xl cursor-pointer gap-[5px]
-                                ml-auto flex-shrink-0 transition-all duration-300
-                                ${open ? "bg-green-50" : "bg-stone-100/60 hover:bg-green-50"}`}
+                            className={`md:hidden flex flex-col justify-center items-center w-9 h-9 border-none rounded-md cursor-pointer gap-[5px]
+                                ml-auto flex-shrink-0 transition-colors duration-150
+                                ${open ? "bg-gray-100" : "bg-transparent hover:bg-gray-100"}`}
                             onClick={() => setOpen(prev => !prev)}
                             aria-expanded={open}
                             aria-controls="mobile-menu"
                             aria-label={open ? "Close menu" : "Open menu"}
                         >
                             <span
-                                className={`block w-5 h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "translate-y-[7px] rotate-45" : ""}`}/>
+                                className={`block w-[18px] h-0.5 rounded-full bg-gray-700 transition-all duration-200 origin-center ${open ? "translate-y-[7px] rotate-45" : ""}`}/>
                             <span
-                                className={`block h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "w-0 opacity-0" : "w-5 opacity-100"}`}/>
+                                className={`block h-0.5 rounded-full bg-gray-700 transition-all duration-200 origin-center ${open ? "w-0 opacity-0" : "w-[18px] opacity-100"}`}/>
                             <span
-                                className={`block w-5 h-0.5 rounded-full bg-stone-600 transition-all duration-300 origin-center ${open ? "-translate-y-[7px] -rotate-45" : ""}`}/>
+                                className={`block w-[18px] h-0.5 rounded-full bg-gray-700 transition-all duration-200 origin-center ${open ? "-translate-y-[7px] -rotate-45" : ""}`}/>
                         </button>
                     )}
                 </div>
             </nav>
 
-            {/* ── Mobile Drawer ── */}
+            {/* ── Mobile Drawer (Cal.com: clean white, no blur) ── */}
             {showFullNav && (
                 <div
                     id="mobile-menu"
-                    className={`fixed top-[68px] left-0 right-0 bg-white/98 backdrop-blur-2xl border-b border-stone-100
-                        shadow-[0_8px_40px_rgba(0,0,0,0.08)] px-6 pt-5 pb-7 flex flex-col gap-1.5 z-[9998]
-                        transition-all duration-300 ease-out
-                        ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-3 pointer-events-none"}`}
+                    className={`fixed top-[56px] left-0 right-0 bg-white border-b border-gray-200
+                        shadow-[0_4px_12px_rgba(0,0,0,0.05)] px-4 pt-3 pb-5 flex flex-col gap-0.5 z-[9998]
+                        transition-all duration-200 ease-out
+                        ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
                     aria-hidden={!open}
                     role="dialog"
                     aria-modal="true"
@@ -281,11 +263,11 @@ export default function Menubar() {
                             end={end}
                             onClick={() => setOpen(false)}
                             className={({isActive}) =>
-                                `flex items-center gap-3 px-4 py-3.5 rounded-xl text-[0.88rem] font-semibold
-                                tracking-[0.03em] uppercase no-underline transition-all duration-300
+                                `flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium
+                                no-underline transition-colors duration-150
                                 ${isActive
-                                    ? "text-green-700 bg-green-50 [&>svg]:opacity-100"
-                                    : "text-stone-500 hover:text-green-700 hover:bg-green-50/70 [&>svg]:hover:opacity-100"
+                                    ? "text-gray-900 bg-gray-100"
+                                    : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                                 }`
                             }
                         >
@@ -294,14 +276,13 @@ export default function Menubar() {
                         </NavLink>
                     ))}
 
-                    <div className="h-px bg-stone-100 my-3 rounded-sm"/>
+                    <div className="h-px bg-gray-200 my-2"/>
 
                     <NavLink
                         to="/meal-planner"
-                        className="flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl text-white text-[0.85rem]
-                            font-semibold tracking-wide no-underline mt-1 shadow-[0_2px_8px_rgba(34,197,94,0.25)]
-                            transition-all duration-300 hover:shadow-[0_4px_16px_rgba(34,197,94,0.35)] active:scale-[0.98]"
-                        style={{background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)"}}
+                        className="flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-md text-white text-sm
+                            font-medium no-underline bg-gray-900 transition-colors duration-150
+                            hover:bg-gray-800 active:scale-[0.98]"
                         onClick={() => setOpen(false)}
                     >
                         {icons.plus}

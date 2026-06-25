@@ -58,96 +58,42 @@ const MealPlanner = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
-            <div className="w-full max-w-4xl flex rounded-2xl shadow-2xl overflow-hidden">
+            <div className="w-full max-w-4xl flex rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.08),0_8px_32px_rgba(0,0,0,0.06)] overflow-hidden border border-gray-200">
 
                 {/* Left Panel */}
                 <div
-                    className="hidden md:flex flex-col justify-between w-5/12 p-10 relative overflow-hidden"
-                    style={{
-                        background:
-                            "linear-gradient(145deg, #16a34a 0%, #15803d 45%, #166534 100%)",
-                    }}
+                    className="hidden md:flex flex-col justify-between w-5/12 p-10 relative overflow-hidden bg-gray-900"
                 >
-                    <div
-                        className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-20"
-                        style={{
-                            background:
-                                "radial-gradient(circle, #4ade80, transparent 70%)",
-                        }}
-                    />
-
-                    <div
-                        className="absolute -bottom-20 -right-12 w-72 h-72 rounded-full opacity-15"
-                        style={{
-                            background:
-                                "radial-gradient(circle, #86efac, transparent 70%)",
-                        }}
-                    />
+                    <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-[0.04] bg-white"/>
+                    <div className="absolute -bottom-20 -right-12 w-72 h-72 rounded-full opacity-[0.03] bg-white"/>
 
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-2">
-                            <div
-                                className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
-                                style={{
-                                    background:
-                                        "rgba(255,255,255,0.2)",
-                                    backdropFilter: "blur(8px)",
-                                }}
-                            >
-                                <svg
-                                    width="22"
-                                    height="22"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="white"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <rect
-                                        x="3"
-                                        y="4"
-                                        width="18"
-                                        height="18"
-                                        rx="2"
-                                        ry="2"
-                                    />
-                                    <line x1="16" y1="2" x2="16" y2="6" />
-                                    <line x1="8" y1="2" x2="8" y2="6" />
-                                    <line x1="3" y1="10" x2="21" y2="10" />
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
                                 </svg>
                             </div>
-
-                            <span
-                                className="text-white font-bold text-2xl tracking-tight"
-                                style={{
-                                    fontFamily:
-                                        "'Playfair Display', Georgia, serif",
-                                }}
-                            >
+                            <span className="text-white font-bold text-xl tracking-tight">
                                 NutriAI
                             </span>
                         </div>
-
-                        <p className="text-green-100 text-sm mt-1 leading-relaxed">
+                        <p className="text-gray-400 text-sm mt-1 leading-relaxed">
                             Your intelligent nutrition companion
                         </p>
                     </div>
 
                     <div className="relative z-10">
-                        <h2
-                            className="text-white text-3xl font-bold leading-tight mb-4"
-                            style={{
-                                fontFamily:
-                                    "'Playfair Display', Georgia, serif",
-                            }}
-                        >
+                        <h2 className="text-white text-2xl font-bold leading-tight mb-4">
                             Plan your week,
                             <br />
                             fuel your life.
                         </h2>
-
-                        <p className="text-green-100 text-sm leading-relaxed opacity-90">
+                        <p className="text-gray-400 text-sm leading-relaxed">
                             Create a personalised weekly meal plan powered
                             by AI. Just pick your start date and we'll
                             handle the rest.
@@ -158,38 +104,25 @@ const MealPlanner = () => {
                 {/* Right Panel */}
                 <div className="flex-1 bg-white p-10 flex flex-col justify-center">
 
-                    <h1
-                        className="text-2xl font-bold text-gray-900 mb-1"
-                        style={{
-                            fontFamily:
-                                "'Playfair Display', Georgia, serif",
-                        }}
-                    >
+                    <h1 className="text-2xl font-bold text-gray-900 mb-1">
                         Create Meal Plan
                     </h1>
-
                     <p className="text-sm text-gray-500 mb-8">
                         Set up your personalised weekly nutrition plan
                     </p>
 
-
-
-                    <form
-                        onSubmit={handleSubmit}
-                        className="space-y-5"
-                    >
+                    <form onSubmit={handleSubmit} className="space-y-5">
                         {/* User ID */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1.5">
                                 User ID
                             </label>
-
                             <input
                                 type="number"
                                 name="userId"
                                 value={formData.userId}
                                 readOnly
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-gray-100 cursor-not-allowed"
+                                className="w-full border border-gray-300 rounded-md px-3.5 py-2.5 text-sm text-gray-900 bg-gray-100 cursor-not-allowed"
                             />
                         </div>
 
@@ -198,26 +131,19 @@ const MealPlanner = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-1.5">
                                 Week Start Date
                             </label>
-
                             <input
                                 type="date"
                                 name="weekStartDate"
                                 value={formData.weekStartDate}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-800 outline-none transition-all duration-200 focus:border-green-500 focus:ring-2 focus:ring-green-100"
+                                className="w-full border border-gray-300 rounded-md px-3.5 py-2.5 text-sm text-gray-900 outline-none transition-all duration-150 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 hover:border-gray-400"
                             />
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full py-2.5 px-4 rounded-lg text-white text-sm font-semibold tracking-wide transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 shadow-md"
-                            style={{
-                                background:
-                                    "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                                boxShadow:
-                                    "0 4px 14px rgba(34,197,94,0.35)",
-                            }}
+                            className="w-full py-2.5 px-4 rounded-md text-white text-sm font-medium tracking-wide transition-all duration-150 bg-gray-900 hover:bg-gray-800 active:scale-[0.99]"
                         >
                             Generate Meal Plan →
                         </button>

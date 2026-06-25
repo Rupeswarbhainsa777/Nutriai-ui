@@ -43,54 +43,44 @@ const Login = () => {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-stone-50 via-green-50/30 to-stone-50 px-4 py-12">
+        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
 
             {/* Card */}
-            <div className="w-full max-w-4xl flex rounded-3xl shadow-[0_4px_6px_rgba(0,0,0,0.02),0_12px_40px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.03)] overflow-hidden animate-scale-in">
+            <div className="w-full max-w-4xl flex rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.08),0_8px_32px_rgba(0,0,0,0.06)] overflow-hidden border border-gray-200 animate-scale-in">
 
-                {/* ── Left brand panel ── */}
+                {/* ── Left brand panel (Cal.com: dark, flat) ── */}
                 <div
-                    className="hidden md:flex flex-col justify-between w-5/12 p-10 relative overflow-hidden"
-                    style={{
-                        background: "linear-gradient(145deg, #16a34a 0%, #15803d 45%, #166534 100%)",
-                    }}
+                    className="hidden md:flex flex-col justify-between w-5/12 p-10 relative overflow-hidden bg-gray-900"
                 >
-                    {/* Decorative blurred circles */}
-                    <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-20"
-                         style={{background: "radial-gradient(circle, #4ade80, transparent 70%)"}}/>
-                    <div className="absolute -bottom-20 -right-12 w-72 h-72 rounded-full opacity-15"
-                         style={{background: "radial-gradient(circle, #86efac, transparent 70%)"}}/>
-                    <div className="absolute top-1/2 left-1/3 w-48 h-48 rounded-full opacity-10"
-                         style={{background: "radial-gradient(circle, #bbf7d0, transparent 70%)"}}/>
+                    {/* Decorative subtle shapes */}
+                    <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full opacity-[0.04] bg-white"/>
+                    <div className="absolute -bottom-20 -right-12 w-72 h-72 rounded-full opacity-[0.03] bg-white"/>
 
                     {/* Brand logo */}
                     <div className="relative z-10">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-11 h-11 rounded-xl flex items-center justify-center shadow-lg"
-                                 style={{background: "rgba(255,255,255,0.18)", backdropFilter: "blur(12px)"}}>
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                                     stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M12 2a10 10 0 1 0 10 10"/>
-                                    <path d="M12 6v6l4 2"/>
+                            <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/10">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                     stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 3C7 3 4 7 4 11c0 5 5 10 8 10 1.5 0 4-2 6-5 1.5-2.5 2-5 2-7 0-3-3-6-8-6z"/>
+                                    <path d="M4 21l8-8"/>
                                 </svg>
                             </div>
-                            <span className="text-white font-bold text-2xl tracking-tight"
-                                  style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
-                                Nutri AI
+                            <span className="text-white font-bold text-xl tracking-tight">
+                                NutriAI
                             </span>
                         </div>
-                        <p className="text-green-100/80 text-sm mt-1 leading-relaxed">
+                        <p className="text-gray-400 text-sm mt-1 leading-relaxed">
                             Your intelligent nutrition companion
                         </p>
                     </div>
 
                     {/* Tagline block */}
                     <div className="relative z-10">
-                        <h2 className="text-white text-3xl font-bold leading-tight mb-4"
-                            style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
+                        <h2 className="text-white text-2xl font-bold leading-tight mb-4">
                             Fuel your body,<br/>feed your goals.
                         </h2>
-                        <p className="text-green-100/80 text-sm leading-relaxed">
+                        <p className="text-gray-400 text-sm leading-relaxed">
                             Track meals, plan your diet, and get AI-powered insights — all in one place.
                         </p>
 
@@ -98,8 +88,7 @@ const Login = () => {
                         <div className="flex flex-wrap gap-2 mt-6">
                             {["🥗 Meal Planning", "🤖 AI Insights", "📊 Nutrition Tracking"].map((f) => (
                                 <span key={f}
-                                      className="text-xs text-white/90 px-3.5 py-1.5 rounded-full font-medium border border-white/10"
-                                      style={{background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)"}}>
+                                      className="text-xs text-gray-300 px-3 py-1.5 rounded-md font-medium bg-white/[0.06] border border-white/[0.08]">
                                     {f}
                                 </span>
                             ))}
@@ -112,23 +101,20 @@ const Login = () => {
 
                     {/* Mobile brand */}
                     <div className="flex md:hidden items-center gap-2.5 mb-8">
-                        <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(34,197,94,0.3)]"
-                             style={{background: "linear-gradient(135deg, #22c55e, #16a34a)"}}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                 stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 2a10 10 0 1 0 10 10"/>
-                                <path d="M12 6v6l4 2"/>
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gray-900">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                 stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 3C7 3 4 7 4 11c0 5 5 10 8 10 1.5 0 4-2 6-5 1.5-2.5 2-5 2-7 0-3-3-6-8-6z"/>
+                                <path d="M4 21l8-8"/>
                             </svg>
                         </div>
-                        <span className="font-bold text-xl text-green-700"
-                              style={{fontFamily: "'Playfair Display', Georgia, serif"}}>NutriAI</span>
+                        <span className="font-bold text-lg text-gray-900">NutriAI</span>
                     </div>
 
-                    <h1 className="text-2xl font-bold text-stone-900 mb-1"
-                        style={{fontFamily: "'Playfair Display', Georgia, serif"}}>
+                    <h1 className="text-2xl font-bold text-gray-900 mb-1">
                         Welcome back
                     </h1>
-                    <p className="text-sm text-stone-400 mb-8">Sign in to continue to your dashboard</p>
+                    <p className="text-sm text-gray-500 mb-8">Sign in to continue to your dashboard</p>
 
 
 
@@ -137,7 +123,7 @@ const Login = () => {
 
                         {/* Email */}
                         <div>
-                            <label className="block text-sm font-semibold text-stone-600 mb-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-1.5">
                                 Email address
                             </label>
                             <input
@@ -148,17 +134,17 @@ const Login = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 outline-none placeholder-stone-300 transition-all duration-300 focus:border-green-400 focus:ring-4 focus:ring-green-100 bg-stone-50/50 hover:border-stone-300"
+                                className="w-full border border-gray-300 rounded-md px-3.5 py-2.5 text-sm text-gray-900 outline-none placeholder-gray-400 transition-all duration-150 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 bg-white hover:border-gray-400"
                             />
                         </div>
 
                         {/* Password */}
                         <div>
-                            <div className="flex items-center justify-between mb-2">
-                                <label className="block text-sm font-semibold text-stone-600">
+                            <div className="flex items-center justify-between mb-1.5">
+                                <label className="block text-sm font-medium text-gray-700">
                                     Password
                                 </label>
-                                <a href="#" className="text-xs text-green-600 hover:text-green-700 transition-colors duration-200 font-semibold">
+                                <a href="#" className="text-xs text-gray-500 hover:text-gray-900 transition-colors duration-150 font-medium">
                                     Forgot password?
                                 </a>
                             </div>
@@ -170,7 +156,7 @@ const Login = () => {
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
-                                className="w-full border border-stone-200 rounded-xl px-4 py-3 text-sm text-stone-800 outline-none placeholder-stone-300 transition-all duration-300 focus:border-green-400 focus:ring-4 focus:ring-green-100 bg-stone-50/50 hover:border-stone-300"
+                                className="w-full border border-gray-300 rounded-md px-3.5 py-2.5 text-sm text-gray-900 outline-none placeholder-gray-400 transition-all duration-150 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 bg-white hover:border-gray-400"
                             />
                         </div>
 
@@ -178,11 +164,7 @@ const Login = () => {
                         <button
                             id="login-submit"
                             type="submit"
-                            className="w-full py-3 px-4 rounded-xl text-white text-sm font-semibold tracking-wide transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] cursor-pointer"
-                            style={{
-                                background: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
-                                boxShadow: "0 2px 8px rgba(34,197,94,0.3), 0 1px 2px rgba(34,197,94,0.2)"
-                            }}
+                            className="w-full py-2.5 px-4 rounded-md text-white text-sm font-medium tracking-wide transition-all duration-150 bg-gray-900 hover:bg-gray-800 active:scale-[0.99] cursor-pointer"
                         >
                             Sign In →
                         </button>
@@ -190,16 +172,16 @@ const Login = () => {
 
                     {/* Divider */}
                     <div className="flex items-center gap-4 my-7">
-                        <div className="flex-1 h-px bg-stone-100"/>
-                        <span className="text-xs text-stone-300 font-semibold uppercase tracking-widest">or</span>
-                        <div className="flex-1 h-px bg-stone-100"/>
+                        <div className="flex-1 h-px bg-gray-200"/>
+                        <span className="text-xs text-gray-400 font-medium uppercase tracking-widest">or</span>
+                        <div className="flex-1 h-px bg-gray-200"/>
                     </div>
 
                     {/* Register link */}
-                    <p className="text-center text-sm text-stone-400">
+                    <p className="text-center text-sm text-gray-500">
                         Don't have an account?{" "}
                         <Link to="/reg"
-                              className="font-semibold text-green-600 hover:text-green-700 transition-colors duration-200">
+                              className="font-medium text-gray-900 hover:underline transition-colors duration-150">
                             Create one free
                         </Link>
                     </p>
